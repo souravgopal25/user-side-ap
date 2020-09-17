@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'dart:async';
 
@@ -16,10 +14,10 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    /* Timer(Duration(seconds: 3), () {
+    Timer(Duration(seconds: 3), () {
       Navigator.push(
           context, new MaterialPageRoute(builder: (context) => LoginPage()));
-    });*/
+    });
   }
 
   @override
