@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'dart:async';
 
@@ -14,10 +16,10 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 5), () {
+    /* Timer(Duration(seconds: 3), () {
       Navigator.push(
           context, new MaterialPageRoute(builder: (context) => LoginPage()));
-    });
+    });*/
   }
 
   @override
@@ -26,6 +28,9 @@ class _SplashScreenState extends State<SplashScreen> {
       body: Stack(
         fit: StackFit.expand,
         children: <Widget>[
+          Container(
+            decoration: BoxDecoration(color: Colors.white),
+          ),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
@@ -35,15 +40,28 @@ class _SplashScreenState extends State<SplashScreen> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Icon(
-                        Icons.directions_railway,
-                        size: 400,
-                      ),
-                      CircularProgressIndicator(),
+                      CircleAvatar(
+                        radius: 150,
+                        backgroundColor: Colors.white,
+                        backgroundImage: AssetImage("assets/logo.jpg"),
+                        /*child: Image.asset(
+                          "assets/logo.png",
+                          fit: BoxFit.cover,
+                        ),*/
+                      )
                     ],
                   ),
                 ),
               ),
+              Expanded(
+                flex: 2,
+                child: Container(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[CircularProgressIndicator()],
+                  ),
+                ),
+              )
             ],
           ),
         ],
