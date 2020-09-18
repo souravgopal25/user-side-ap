@@ -1,7 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'package:user_side_ap/card/news_card.dart';
+import 'dart:convert';
 
-class NewsPage extends StatelessWidget {
+import 'package:user_side_ap/models/news.dart';
+
+class NewsPage extends StatefulWidget {
   const NewsPage({Key key}) : super(key: key);
+
+  @override
+  _NewsPageState createState() => _NewsPageState();
+}
+
+class _NewsPageState extends State<NewsPage> {
+  Future<News> futureNews;
+  @override
+  void initState() {
+    super.initState();
+    futureNews = fetchNews();
+    print(futureNews);
+    print(futureNews.then((value) => value.totalArticles.toString()));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -9,57 +28,29 @@ class NewsPage extends StatelessWidget {
       appBar: AppBar(
         title: Text("News Page"),
       ),
-      body: NewsCard(),
+      body: FutureBuilder(
+          future: futureNews,
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              return ListView.builder(itemBuilder: (context, index) {
+                print(index);
+                return NewsCard(articles: snapshot.data.articles[index]);
+              });
+            } else if (snapshot.hasError) {
+              return Text("Error");
+            }
+            return CircularProgressIndicator();
+          }),
     );
   }
 }
 
-class NewsCard extends StatelessWidget {
-  const NewsCard({
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Column(
-        children: <Widget>[
-          Card(
-            elevation: 10,
-            color: Colors.white,
-            shadowColor: Colors.grey[200],
-            child: Column(
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.all(0.0),
-                  child: Image.network(
-                      "https://cdn.thewire.in/wp-content/uploads/2020/09/14211155/2020-09-14T150646Z_1_LYNXMPEG8D1I6_RTROPTP_3_SPACE-EXPLORATION-VENUS-e1600098181101.jpg"),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Text(
-                    "Sonowal asks entrepreneurs to tap market potential of bamboo ",
-                    style: TextStyle(fontSize: 25.0),
-                    textAlign: TextAlign.start,
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
-                  child: Text(
-                    "A total of 126 public complaints regarding impro"
-                    "per management of biomedical waste were received in the"
-                    "last two years, with notices issued to healthcare facilities in"
-                    "Rajasthan, Assam and Madhya Pradesh, the environment ministry"
-                    " informed the Lok Sabha on Friday.",
-                    style: TextStyle(fontSize: 18.0),
-                  ),
-                )
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
+Future<News> fetchNews() async {
+  final response = await http.get(
+      'https://gnews.io/api/v4/search?q=assam&token=2d1339c1d7103badb7f0e04fb2e8787e');
+  if (response.statusCode == 200) {
+    return News.fromJson(json.decode(response.body));
+  } else {
+    throw Exception('failed to load album');
   }
 }
