@@ -18,6 +18,8 @@ class NewsCard extends StatelessWidget {
               launch(articles.url);
             },
             child: Card(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15.0)),
               elevation: 10,
               color: Colors.white,
               shadowColor: Colors.grey[200],
@@ -25,7 +27,7 @@ class NewsCard extends StatelessWidget {
               child: Column(
                 children: <Widget>[
                   Padding(
-                    padding: const EdgeInsets.all(0.0),
+                    padding: const EdgeInsets.all(1.0),
                     child: Image.network(articles.image),
                   ),
                   Padding(

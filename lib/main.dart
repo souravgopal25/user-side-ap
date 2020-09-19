@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:user_side_ap/page/news_page.dart';
-import 'package:user_side_ap/page/splash_screen.dart';
+import 'package:user_side_ap/page/updates.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -20,7 +19,7 @@ class _MyHomeState extends State<MyHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: NewsPage(),
+      body: Updates(),
     );
   }
 }

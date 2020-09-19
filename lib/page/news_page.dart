@@ -41,7 +41,7 @@ class _NewsPageState extends State<NewsPage> {
             } else if (snapshot.hasError) {
               return Text("Error");
             }
-            return CircularProgressIndicator();
+            return Center(child: CircularProgressIndicator());
           }),
     );
   }
@@ -53,6 +53,6 @@ Future<News> fetchNews() async {
   if (response.statusCode == 200) {
     return News.fromJson(json.decode(response.body));
   } else {
-    throw Exception('failed to load album');
+    throw Exception('failed to load News');
   }
 }
