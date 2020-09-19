@@ -32,10 +32,12 @@ class _NewsPageState extends State<NewsPage> {
           future: futureNews,
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              return ListView.builder(itemBuilder: (context, index) {
-                print(index);
-                return NewsCard(articles: snapshot.data.articles[index]);
-              });
+              return ListView.builder(
+                  itemCount: snapshot.data.articles.length,
+                  itemBuilder: (context, index) {
+                    print(index);
+                    return NewsCard(articles: snapshot.data.articles[index]);
+                  });
             } else if (snapshot.hasError) {
               return Text("Error");
             }
