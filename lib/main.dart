@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:user_side_ap/page/dashboard.dart';
-import 'package:user_side_ap/page/homepage.dart';
+import 'package:user_side_ap/page/alerts.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -20,7 +19,7 @@ class _MyHomeState extends State<MyHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Dashboard(),
+      body: Alerts(),
     );
   }
 }
