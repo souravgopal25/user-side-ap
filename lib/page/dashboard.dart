@@ -19,84 +19,48 @@ class Dashboard extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: DashBoardSlider(),
             ),
-            RaisedButton(
-                color: Color(0xFF396AFC),
-                onPressed: () {},
-                child: Text(
-                  "Report Annomously",
-                  style: TextStyle(fontSize: 40, color: Colors.white),
-                )),
+            SizedBox(
+              height: 20,
+            ),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Card(
-                //TODO button does't looks good as of now
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    RaisedButton(
-                      onPressed: () {},
-                      child: Container(
-                        decoration: const BoxDecoration(
-                            gradient: LinearGradient(colors: <Color>[
-                          Color(0xFF396AFC),
-                          Color(0xFF2948FF)
-                        ])),
-                        child: Text(
-                          "Report Anonymously",
-                          style: TextStyle(fontSize: 40, color: Colors.white),
-                        ),
-                      ),
-                    ),
-                    RaisedButton(
-                      onPressed: () {},
-                      child: Container(
-                        decoration: const BoxDecoration(
-                            gradient: LinearGradient(colors: <Color>[
-                          Color(0xFF396AFC),
-                          Color(0xFF2948FF)
-                        ])),
-                        child: Text(
-                          "Report",
-                          style: TextStyle(fontSize: 40, color: Colors.white),
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-              ),
+              child: RaisedButton(
+                  color: Colors.redAccent,
+                  onPressed: () {},
+                  child: Text(
+                    "Report Annomously",
+                    style: TextStyle(fontSize: 40, color: Colors.white),
+                  )),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                RaisedButton(
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: RaisedButton(
+                  color: Colors.redAccent,
                   onPressed: () {},
-                  child: Container(
-                    decoration: const BoxDecoration(
-                        gradient: LinearGradient(colors: <Color>[
-                      Color(0xFF396AFC),
-                      Color(0xFF2948FF)
-                    ])),
-                    child: Text(
-                      "Alerts",
-                      style: TextStyle(fontSize: 40, color: Colors.white),
-                    ),
-                  ),
-                ),
-                RaisedButton(
+                  child: Text(
+                    "Report & Track",
+                    style: TextStyle(fontSize: 40, color: Colors.white),
+                  )),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: RaisedButton(
+                  color: Colors.redAccent,
                   onPressed: () {},
-                  child: Container(
-                    decoration: const BoxDecoration(
-                        gradient: LinearGradient(colors: <Color>[
-                      Color(0xFF396AFC),
-                      Color(0xFF2948FF)
-                    ])),
-                    child: Text(
-                      "News",
-                      style: TextStyle(fontSize: 40, color: Colors.white),
-                    ),
-                  ),
-                )
-              ],
+                  child: Text(
+                    "Alerts",
+                    style: TextStyle(fontSize: 40, color: Colors.white),
+                  )),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: RaisedButton(
+                  color: Colors.redAccent,
+                  onPressed: () {},
+                  child: Text(
+                    "News",
+                    style: TextStyle(fontSize: 40, color: Colors.white),
+                  )),
             ),
           ],
         ),
