@@ -19,6 +19,13 @@ class Dashboard extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: DashBoardSlider(),
             ),
+            RaisedButton(
+                color: Color(0xFF396AFC),
+                onPressed: () {},
+                child: Text(
+                  "Report Annomously",
+                  style: TextStyle(fontSize: 40, color: Colors.white),
+                )),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Card(
