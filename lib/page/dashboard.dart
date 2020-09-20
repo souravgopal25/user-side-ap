@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:user_side_ap/card/drawer_card.dart';
 import 'package:user_side_ap/slider/slider.dart';
 
 class Dashboard extends StatelessWidget {
@@ -25,6 +26,7 @@ class Dashboard extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: RaisedButton(
+                  elevation: 10,
                   color: Colors.redAccent,
                   onPressed: () {},
                   child: Text(
@@ -35,6 +37,7 @@ class Dashboard extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: RaisedButton(
+                  elevation: 10,
                   color: Colors.redAccent,
                   onPressed: () {},
                   child: Text(
@@ -45,6 +48,18 @@ class Dashboard extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: RaisedButton(
+                  elevation: 10,
+                  color: Colors.redAccent,
+                  onPressed: () {},
+                  child: Text(
+                    "Updates",
+                    style: TextStyle(fontSize: 40, color: Colors.white),
+                  )),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: RaisedButton(
+                  elevation: 10,
                   color: Colors.redAccent,
                   onPressed: () {},
                   child: Text(
@@ -55,6 +70,7 @@ class Dashboard extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: RaisedButton(
+                  elevation: 10,
                   color: Colors.redAccent,
                   onPressed: () {},
                   child: Text(
@@ -65,6 +81,7 @@ class Dashboard extends StatelessWidget {
           ],
         ),
       ),
+      drawer: Menu(),
     );
   }
 }
