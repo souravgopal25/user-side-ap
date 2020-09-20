@@ -10,7 +10,11 @@ class Updates extends StatelessWidget {
       appBar: AppBar(
         title: Text("Updates"),
       ),
-      body: UpdateCard(),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [UpdateCard(), UpdateCard()],
+        ),
+      ),
     );
   }
 }

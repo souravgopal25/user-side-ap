@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:user_side_ap/page/dashboard.dart';
 import 'dart:async';
-
-import 'package:user_side_ap/page/selector.dart';
 
 class SplashScreen extends StatefulWidget {
   SplashScreen({Key key}) : super(key: key);
@@ -16,7 +15,7 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     Timer(Duration(seconds: 3), () {
       Navigator.push(
-          context, new MaterialPageRoute(builder: (context) => Selector()));
+          context, new MaterialPageRoute(builder: (context) => Dashboard()));
     });
   }
 

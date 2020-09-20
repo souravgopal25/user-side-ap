@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:user_side_ap/card/drawer_card.dart';
+import 'package:user_side_ap/models/news.dart';
+import 'package:user_side_ap/page/alerts.dart';
+import 'package:user_side_ap/page/news_page.dart';
+import 'package:user_side_ap/page/updates.dart';
 import 'package:user_side_ap/slider/slider.dart';
 
 class Dashboard extends StatelessWidget {
@@ -50,7 +54,10 @@ class Dashboard extends StatelessWidget {
               child: RaisedButton(
                   elevation: 10,
                   color: Colors.redAccent,
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(context,
+                        new MaterialPageRoute(builder: (context) => Updates()));
+                  },
                   child: Text(
                     "Updates",
                     style: TextStyle(fontSize: 40, color: Colors.white),
@@ -61,7 +68,10 @@ class Dashboard extends StatelessWidget {
               child: RaisedButton(
                   elevation: 10,
                   color: Colors.redAccent,
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(context,
+                        new MaterialPageRoute(builder: (context) => Alerts()));
+                  },
                   child: Text(
                     "Alerts",
                     style: TextStyle(fontSize: 40, color: Colors.white),
@@ -72,7 +82,12 @@ class Dashboard extends StatelessWidget {
               child: RaisedButton(
                   elevation: 10,
                   color: Colors.redAccent,
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        new MaterialPageRoute(
+                            builder: (context) => NewsPage()));
+                  },
                   child: Text(
                     "News",
                     style: TextStyle(fontSize: 40, color: Colors.white),
