@@ -11,6 +11,7 @@ class CaseDetails extends StatefulWidget {
 
 class _CaseDetailsPage extends State<CaseDetails> {
 
+  String casetype;
   String titleCase;
   String description;
   String suspect;
@@ -40,7 +41,7 @@ class _CaseDetailsPage extends State<CaseDetails> {
                   ),
                   onChanged: (value) {
                     setState(() {
-                      titleCase = value;
+                      casetype = value;
                     });
                   },
 
