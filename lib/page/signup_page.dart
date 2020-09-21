@@ -1,19 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:user_side_ap/form/login_form.dart';
+import 'package:user_side_ap/form/signup_form.dart';
 
-import 'package:user_side_ap/page/signup_page.dart';
-
-class LoginPage extends StatefulWidget {
-  LoginPage({Key key}) : super(key: key);
-
-  @override
-  _LoginPageState createState() => _LoginPageState();
-}
-
-class _LoginPageState extends State<LoginPage> {
+class SignupPage extends StatelessWidget {
   final emailController = TextEditingController();
   final passController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  SignupPage({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return LoginPage(
+        formKey: _formKey,
+        emailController: emailController,
+        passController: passController);
+  }
+}
+
+class LoginPage extends StatelessWidget {
+  const LoginPage({
+    Key key,
+    @required GlobalKey<FormState> formKey,
+    @required this.emailController,
+    @required this.passController,
+  })  : _formKey = formKey,
+        super(key: key);
+
+  final GlobalKey<FormState> _formKey;
+  final TextEditingController emailController;
+  final TextEditingController passController;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,26 +44,20 @@ class _LoginPageState extends State<LoginPage> {
                   children: <Widget>[
                     Container(
                       child: Text(
-                        "Login",
+                        "Signup",
                         style: TextStyle(fontSize: 100, color: Colors.blue),
                       ),
                     ),
                     SizedBox(
                       height: 20,
                     ),
-                    LoginForm(
+                    SignupForm(
                         formKey: _formKey,
                         emailController: emailController,
                         passController: passController),
-                    RaisedButton(
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            new MaterialPageRoute(
-                                builder: (context) => SignupPage()));
-                      },
-                      child: Text("SIgnup-form"),
-                    )
+                    SizedBox(
+                      height: 20,
+                    ),
                   ],
                 ),
               ),
