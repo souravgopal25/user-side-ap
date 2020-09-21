@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:user_side_ap/page/dashboard.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
-class SignupForm extends StatelessWidget {
-  const SignupForm({
+final otpController = TextEditingController();
+
+class SignupForm extends StatefulWidget {
+  SignupForm({
     Key key,
     @required GlobalKey<FormState> formKey,
     @required this.emailController,
@@ -15,16 +18,41 @@ class SignupForm extends StatelessWidget {
   final TextEditingController passController;
 
   @override
+  _SignupFormState createState() => _SignupFormState();
+}
+
+class _SignupFormState extends State<SignupForm> {
+  final phoneController = TextEditingController();
+
+  @override
   Widget build(BuildContext context) {
     return Form(
-      key: _formKey,
+      key: widget._formKey,
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: <Widget>[
             TextFormField(
+              keyboardType: TextInputType.phone,
+              controller: phoneController,
+              maxLength: 10,
+              validator: (String value) {
+                if (value.isEmpty) {
+                  return "Phone Required";
+                }
+                return null;
+              },
+              decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  hintText: "Enter Phone",
+                  labelText: "Phone"),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            TextFormField(
               keyboardType: TextInputType.emailAddress,
-              controller: emailController,
+              controller: widget.emailController,
               validator: (String value) {
                 if (value.isEmpty) {
                   return "Email Required";
@@ -43,7 +71,7 @@ class SignupForm extends StatelessWidget {
               keyboardType: TextInputType.visiblePassword,
               obscureText: true,
               maxLength: 10,
-              controller: passController,
+              controller: widget.passController,
               validator: (String value) {
                 if (value.length < 6) {
                   return "Password Required with length 6+";
@@ -57,10 +85,61 @@ class SignupForm extends StatelessWidget {
             ),
             RaisedButton(
               onPressed: () async {
-                if (!_formKey.currentState.validate()) {
+                FirebaseAuth _auth = FirebaseAuth.instance;
+                if (!widget._formKey.currentState.validate()) {
                   return;
                 } else {
-                  showAlertDialog(context);
+                  /*var result = await FirebaseAuth.instance
+                      .createUserWithEmailAndPassword(
+                          email: emailController.text.trim(),
+                          password: passController.text.trim());*/
+                  try {
+                    var result = await _auth.signInWithEmailAndPassword(
+                        email: widget.emailController.text.trim(),
+                        password: widget.passController.text.trim());
+                    if (_auth.currentUser != null) {
+                      try {
+                        FirebaseAuth _auth1 = FirebaseAuth.instance;
+                        await _auth1.verifyPhoneNumber(
+                            phoneNumber: "+91 7979 970 460",
+                            timeout: const Duration(seconds: 60),
+                            verificationCompleted:
+                                (PhoneAuthCredential credential) {
+                              Navigator.push(
+                                  context,
+                                  new MaterialPageRoute(
+                                      builder: (context) => Dashboard()));
+                            },
+                            verificationFailed: (FirebaseAuthException e) {},
+                            codeSent:
+                                (String verificationID, int resendToken) async {
+                              showAlertDialog(
+                                  context, phoneController.text.trim());
+                              PhoneAuthCredential phoneAuthCredential =
+                                  PhoneAuthProvider.credential(
+                                      verificationId: verificationID,
+                                      smsCode: otpController.text.trim());
+                              try {
+                                await _auth1
+                                    .signInWithCredential(phoneAuthCredential);
+                              } on Exception catch (e) {
+                                print(e);
+                              }
+                            },
+                            codeAutoRetrievalTimeout:
+                                (String verificationId) {});
+                      } on Exception catch (e) {
+                        print("FALSE");
+                        print(e); // TODO
+                      }
+                    } else {
+                      print("NULL");
+                    }
+                  } on Exception catch (e) {
+                    print(e);
+                  }
+
+                  print("123456");
                 }
               },
               focusElevation: 10,
@@ -75,14 +154,12 @@ class SignupForm extends StatelessWidget {
   }
 }
 
-showAlertDialog(BuildContext context) {
+showAlertDialog(BuildContext context, String mobile) {
   //Creating Button
-  final otpController = TextEditingController();
   Widget okButton = FlatButton(
       onPressed: () {
         print(otpController.text);
-        Navigator.push(
-            context, new MaterialPageRoute(builder: (context) => Dashboard()));
+
         //TODO ADD FIREBASE AUTH FOR OTP VERIFICATION
       },
       child: Text("Submit"));
@@ -107,7 +184,7 @@ showAlertDialog(BuildContext context) {
             labelText: "OTP"),
       ),
     ),
-    actions: [okButton],
+    actions: [],
   );
 
   showDialog(
