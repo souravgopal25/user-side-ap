@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:user_side_ap/form/login_form.dart';
 import 'package:user_side_ap/form/signup_form.dart';
-
+/*
 class SignupPage extends StatelessWidget {
   final emailController = TextEditingController();
   final passController = TextEditingController();
@@ -67,4 +67,4 @@ class LoginPage extends StatelessWidget {
       ),
     );
   }
-}
+}*/
