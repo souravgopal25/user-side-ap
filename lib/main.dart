@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:user_side_ap/page/splash_screen.dart';
+import 'package:user_side_ap/page/login_page.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -19,7 +19,7 @@ class _MyHomeState extends State<MyHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SplashScreen(),
+      body: LoginPage(),
     );
   }
 }
