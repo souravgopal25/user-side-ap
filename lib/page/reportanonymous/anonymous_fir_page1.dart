@@ -18,6 +18,7 @@ class _AnonymousPageState extends State<AnonymousRegistration> {
   String city;
   var _cities = ['Bhubneshswar', 'Berhampur', 'Cuttuck', 'others'];
   var _currentItemSelected2 = 'Berhampur';
+  String district;
   String policestation;
   String otp;
 
@@ -85,6 +86,27 @@ class _AnonymousPageState extends State<AnonymousRegistration> {
                 ),
 
 
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+                  child: TextField(
+                    decoration: InputDecoration(
+                      prefixIcon: Icon(Icons.location_city),
+                      labelText: 'District',
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                            color: Colors.blue
+                        ),
+                      ),
+                      border: OutlineInputBorder(),
+                    ),
+                    onChanged: (value) {
+                      setState(() {
+                        district = value;
+                      });
+                    },
+                  ),
+                ),
+
 
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
@@ -116,7 +138,7 @@ class _AnonymousPageState extends State<AnonymousRegistration> {
             backgroundColor: Colors.blue,
             onPressed: () {
               Navigator.of(context).push(MaterialPageRoute(
-                  builder: (BuildContext context) => (AnonymousDetails())
+                 // builder: (BuildContext context) => (AnonymousDetails())
               ));
             }
         )
