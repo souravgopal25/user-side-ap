@@ -1,24 +1,22 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'anonymous_fir_page2.dart';
 
-class AnonymousRegistration extends StatefulWidget {
-  AnonymousRegistration({Key key, this.title}) : super(key: key);
+class UserRegistration extends StatefulWidget {
+  UserRegistration({Key key, this.title}) : super(key: key);
 
   final String title;
 
-  _AnonymousPageState createState() => _AnonymousPageState();
+  _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _AnonymousPageState extends State<AnonymousRegistration> {
+class _MyHomePageState extends State<UserRegistration> {
   String state;
   var _states = ['sikkim', 'andra pradesh', 'odissa', 'others'];
   var _currentItemSelected1 = 'odissa';
   String city;
   var _cities = ['Bhubneshswar', 'Berhampur', 'Cuttuck', 'others'];
   var _currentItemSelected2 = 'Berhampur';
-  String district;
   String policestation;
   String otp;
 
@@ -82,32 +80,6 @@ class _AnonymousPageState extends State<AnonymousRegistration> {
                   ),
                 ),
 
-<<<<<<< HEAD
-=======
-
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
-                  child: TextField(
-                    decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.location_city),
-                      labelText: 'District',
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                            color: Colors.blue
-                        ),
-                      ),
-                      border: OutlineInputBorder(),
-                    ),
-                    onChanged: (value) {
-                      setState(() {
-                        district = value;
-                      });
-                    },
-                  ),
-                ),
-
-
->>>>>>> 8d8a907639757f01227fae87db8f987ebfc5bced
                 Padding(
                   padding:
                       EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
@@ -127,6 +99,44 @@ class _AnonymousPageState extends State<AnonymousRegistration> {
                     },
                   ),
                 ),
+                Padding(
+                  padding:
+                      EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+                  child: TextField(
+                    decoration: InputDecoration(
+                      prefixIcon: Icon(Icons.phone_android),
+                      labelText: 'OTP',
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.blue),
+                      ),
+                      border: OutlineInputBorder(),
+                    ),
+                    onChanged: (value) {
+                      setState(() {
+                        otp = value;
+                      });
+                    },
+                  ),
+                ),
+                Padding(
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 10.0, vertical: 8.0),
+                  child: MaterialButton(
+                    child: Text(
+                      'Get OTP',
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+                    ),
+                    color: Colors.blue,
+                    onPressed: () {
+                      print(state);
+                      print(city);
+                      print(policestation);
+                      print(otp);
+                    },
+                  ),
+                )
               ],
             ),
           ),
@@ -136,17 +146,8 @@ class _AnonymousPageState extends State<AnonymousRegistration> {
             child: new Icon(Icons.chevron_right),
             backgroundColor: Colors.blue,
             onPressed: () {
-              Navigator.of(context).push(MaterialPageRoute(
-<<<<<<< HEAD
-                  builder: (BuildContext context) => (AnonymousDetails())));
+              //Navigator.of(context).push(MaterialPageRoute(
+                 // builder: (BuildContext context) => (CaseDetails())));
             }));
-=======
-                 // builder: (BuildContext context) => (AnonymousDetails())
-              ));
-            }
-        )
-    );
-
->>>>>>> 8d8a907639757f01227fae87db8f987ebfc5bced
   }
 }
