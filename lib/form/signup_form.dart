@@ -22,6 +22,72 @@ class SignupForm extends StatefulWidget {
 }
 
 class _SignupFormState extends State<SignupForm> {
+  Future<bool> loginUser(String phone, BuildContext context) async {
+    FirebaseAuth _auth = FirebaseAuth.instance;
+    _auth.verifyPhoneNumber(
+        phoneNumber: phone,
+        timeout: Duration(seconds: 60),
+        verificationCompleted: (AuthCredential credential) async {
+          var result = await _auth.signInWithCredential(credential);
+          User user = result.user;
+          if (user != null) {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => Dashboard()));
+          }
+        },
+        verificationFailed: (FirebaseAuthException exception) {
+          print(exception);
+        },
+        codeSent: (String verificationID, [int forceResendingToken]) {
+          showDialog(
+              context: context,
+              barrierDismissible: false,
+              builder: (context) {
+                return AlertDialog(
+                  title: Text("Give the code?"),
+                  content: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      TextField(
+                        controller: otpController,
+                      ),
+                    ],
+                  ),
+                  actions: <Widget>[
+                    FlatButton(
+                      child: Text("Confirm"),
+                      textColor: Colors.white,
+                      color: Colors.blue,
+                      onPressed: () async {
+                        final code = otpController.text.trim();
+                        AuthCredential credential =
+                            PhoneAuthProvider.credential(
+                                verificationId: verificationID, smsCode: code);
+
+                        var result =
+                            await _auth.signInWithCredential(credential);
+
+                        User user = result.user;
+
+                        if (user != null) {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Dashboard()));
+                        } else {
+                          print("Error");
+                        }
+                      },
+                    )
+                  ],
+                );
+              });
+        },
+        codeAutoRetrievalTimeout: (String verificationId) {
+          print(verificationId);
+        });
+  }
+
   final phoneController = TextEditingController();
 
   @override
@@ -89,57 +155,13 @@ class _SignupFormState extends State<SignupForm> {
                 if (!widget._formKey.currentState.validate()) {
                   return;
                 } else {
-                  /*var result = await FirebaseAuth.instance
-                      .createUserWithEmailAndPassword(
-                          email: emailController.text.trim(),
-                          password: passController.text.trim());*/
-                  try {
-                    var result = await _auth.signInWithEmailAndPassword(
-                        email: widget.emailController.text.trim(),
-                        password: widget.passController.text.trim());
-                    if (_auth.currentUser != null) {
-                      try {
-                        FirebaseAuth _auth1 = FirebaseAuth.instance;
-                        await _auth1.verifyPhoneNumber(
-                            phoneNumber: "+91 7979 970 460",
-                            timeout: const Duration(seconds: 60),
-                            verificationCompleted:
-                                (PhoneAuthCredential credential) {
-                              Navigator.push(
-                                  context,
-                                  new MaterialPageRoute(
-                                      builder: (context) => Dashboard()));
-                            },
-                            verificationFailed: (FirebaseAuthException e) {},
-                            codeSent:
-                                (String verificationID, int resendToken) async {
-                              showAlertDialog(
-                                  context, phoneController.text.trim());
-                              PhoneAuthCredential phoneAuthCredential =
-                                  PhoneAuthProvider.credential(
-                                      verificationId: verificationID,
-                                      smsCode: otpController.text.trim());
-                              try {
-                                await _auth1
-                                    .signInWithCredential(phoneAuthCredential);
-                              } on Exception catch (e) {
-                                print(e);
-                              }
-                            },
-                            codeAutoRetrievalTimeout:
-                                (String verificationId) {});
-                      } on Exception catch (e) {
-                        print("FALSE");
-                        print(e); // TODO
-                      }
-                    } else {
-                      print("NULL");
-                    }
-                  } on Exception catch (e) {
-                    print(e);
+                  var result1 = await _auth.signInWithEmailAndPassword(
+                      email: widget.emailController.text.trim(),
+                      password: widget.passController.text.trim());
+                  User user = result1.user;
+                  if (user != null) {
+                    loginUser("+91" + phoneController.text.trim(), context);
                   }
-
-                  print("123456");
                 }
               },
               focusElevation: 10,

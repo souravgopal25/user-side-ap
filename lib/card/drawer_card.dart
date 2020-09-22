@@ -23,12 +23,40 @@ class Menu extends StatelessWidget {
             ),
           ),
           ListTile(
-            leading: Icon(Icons.forward),
+            leading: Icon(Icons.verified_user),
+            title: Text(
+              'User Profile',
+              style: TextStyle(fontSize: 20.0),
+            ),
+          ),
+          ListTile(
+            leading: Icon(Icons.local_offer),
+            title: Text(
+              'View Case Status',
+              style: TextStyle(fontSize: 20.0),
+            ),
+          ),
+          ListTile(
+            leading: Icon(Icons.translate),
+            title: Text(
+              'Language Change',
+              style: TextStyle(fontSize: 20.0),
+            ),
+          ),
+          ListTile(
+            leading: Icon(Icons.call),
+            title: Text(
+              'Helpline',
+              style: TextStyle(fontSize: 20.0),
+            ),
+          ),
+          ListTile(
+            leading: Icon(Icons.perm_device_information),
             title: Text(
               'SignOut',
               style: TextStyle(fontSize: 20.0),
             ),
-          )
+          ),
         ],
       ),
     );
