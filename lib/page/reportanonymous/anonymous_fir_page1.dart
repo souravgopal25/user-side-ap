@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'anonymous_fir_page2.dart';
+
 class AnonymousRegistration extends StatefulWidget {
   AnonymousRegistration({Key key, this.title}) : super(key: key);
 
