@@ -1,8 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'anonymous_fir_page2.dart';
-
 class AnonymousRegistration extends StatefulWidget {
   AnonymousRegistration({Key key, this.title}) : super(key: key);
 
@@ -82,19 +80,15 @@ class _AnonymousPageState extends State<AnonymousRegistration> {
                   ),
                 ),
 
-<<<<<<< HEAD
-=======
-
                 Padding(
-                  padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+                  padding:
+                      EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
                   child: TextField(
                     decoration: InputDecoration(
                       prefixIcon: Icon(Icons.location_city),
                       labelText: 'District',
                       enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                            color: Colors.blue
-                        ),
+                        borderSide: BorderSide(color: Colors.blue),
                       ),
                       border: OutlineInputBorder(),
                     ),
@@ -106,8 +100,6 @@ class _AnonymousPageState extends State<AnonymousRegistration> {
                   ),
                 ),
 
-
->>>>>>> 8d8a907639757f01227fae87db8f987ebfc5bced
                 Padding(
                   padding:
                       EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
@@ -137,16 +129,7 @@ class _AnonymousPageState extends State<AnonymousRegistration> {
             backgroundColor: Colors.blue,
             onPressed: () {
               Navigator.of(context).push(MaterialPageRoute(
-<<<<<<< HEAD
                   builder: (BuildContext context) => (AnonymousDetails())));
             }));
-=======
-                 // builder: (BuildContext context) => (AnonymousDetails())
-              ));
-            }
-        )
-    );
-
->>>>>>> 8d8a907639757f01227fae87db8f987ebfc5bced
   }
 }

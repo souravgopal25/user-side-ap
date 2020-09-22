@@ -1,17 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'fir_page2.dart';
+
 class UserRegistration extends StatefulWidget {
   UserRegistration({Key key, this.title}) : super(key: key);
 
   final String title;
 
-
   _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<UserRegistration> {
-
   String state;
   var _states = ['sikkim', 'andra pradesh', 'odissa', 'others'];
   var _currentItemSelected1 = 'odissa';
@@ -21,7 +21,6 @@ class _MyHomePageState extends State<UserRegistration> {
   String district;
   String policestation;
   String otp;
-
 
   @override
   Widget build(BuildContext context) {
@@ -49,15 +48,14 @@ class _MyHomePageState extends State<UserRegistration> {
                   child: Divider(),
                 ),
                 Padding(
-                  padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+                  padding:
+                      EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
                   child: TextField(
                     decoration: InputDecoration(
                       prefixIcon: Icon(Icons.location_city),
                       labelText: 'State',
                       enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                            color: Colors.blue
-                        ),
+                        borderSide: BorderSide(color: Colors.blue),
                       ),
                       border: OutlineInputBorder(),
                     ),
@@ -65,15 +63,14 @@ class _MyHomePageState extends State<UserRegistration> {
                 ),
 
                 Padding(
-                  padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+                  padding:
+                      EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
                   child: TextField(
                     decoration: InputDecoration(
                       prefixIcon: Icon(Icons.location_city),
                       labelText: 'City',
                       enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                            color: Colors.blue
-                        ),
+                        borderSide: BorderSide(color: Colors.blue),
                       ),
                       border: OutlineInputBorder(),
                     ),
@@ -86,15 +83,14 @@ class _MyHomePageState extends State<UserRegistration> {
                 ),
 
                 Padding(
-                  padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+                  padding:
+                      EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
                   child: TextField(
                     decoration: InputDecoration(
                       prefixIcon: Icon(Icons.location_city),
                       labelText: 'District',
                       enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                            color: Colors.blue
-                        ),
+                        borderSide: BorderSide(color: Colors.blue),
                       ),
                       border: OutlineInputBorder(),
                     ),
@@ -106,19 +102,15 @@ class _MyHomePageState extends State<UserRegistration> {
                   ),
                 ),
 
-
-
-
                 Padding(
-                  padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+                  padding:
+                      EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
                   child: TextField(
                     decoration: InputDecoration(
                       prefixIcon: Icon(Icons.business),
                       labelText: 'Police Station',
                       enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                            color: Colors.blue
-                        ),
+                        borderSide: BorderSide(color: Colors.blue),
                       ),
                       border: OutlineInputBorder(),
                     ),
@@ -130,15 +122,14 @@ class _MyHomePageState extends State<UserRegistration> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+                  padding:
+                      EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
                   child: TextField(
                     decoration: InputDecoration(
                       prefixIcon: Icon(Icons.phone_android),
                       labelText: 'OTP',
                       enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                            color: Colors.blue
-                        ),
+                        borderSide: BorderSide(color: Colors.blue),
                       ),
                       border: OutlineInputBorder(),
                     ),
@@ -150,12 +141,15 @@ class _MyHomePageState extends State<UserRegistration> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 8.0),
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 10.0, vertical: 8.0),
                   child: MaterialButton(
-                    child: Text('Get OTP',
+                    child: Text(
+                      'Get OTP',
                       style: TextStyle(
                         color: Colors.white,
-                      ),),
+                      ),
+                    ),
                     color: Colors.blue,
                     onPressed: () {
                       print(state);
@@ -175,11 +169,7 @@ class _MyHomePageState extends State<UserRegistration> {
             backgroundColor: Colors.blue,
             onPressed: () {
               Navigator.of(context).push(MaterialPageRoute(
-                  //builder: (BuildContext context) => (CaseDetails())
-              ));
-            }
-        )
-    );
-
+                  builder: (BuildContext context) => (CaseDetails())));
+            }));
   }
 }
