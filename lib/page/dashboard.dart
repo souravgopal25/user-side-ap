@@ -3,6 +3,8 @@ import 'package:user_side_ap/card/drawer_card.dart';
 
 import 'package:user_side_ap/page/alerts.dart';
 import 'package:user_side_ap/page/news_page.dart';
+import 'package:user_side_ap/page/report/firpage1.dart';
+import 'package:user_side_ap/page/reportanonymous/anonymous_fir_page1.dart';
 import 'package:user_side_ap/page/updates.dart';
 import 'package:user_side_ap/slider/slider.dart';
 
@@ -33,7 +35,12 @@ class Dashboard extends StatelessWidget {
                 child: RaisedButton(
                     elevation: 10,
                     color: Colors.redAccent,
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          new MaterialPageRoute(
+                              builder: (context) => AnonymousRegistration()));
+                    },
                     child: Text(
                       "Report Annomously",
                       style: TextStyle(fontSize: 40, color: Colors.white),
@@ -44,7 +51,12 @@ class Dashboard extends StatelessWidget {
                 child: RaisedButton(
                     elevation: 10,
                     color: Colors.redAccent,
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          new MaterialPageRoute(
+                              builder: (context) => UserRegistration()));
+                    },
                     child: Text(
                       "Report & Track",
                       style: TextStyle(fontSize: 40, color: Colors.white),

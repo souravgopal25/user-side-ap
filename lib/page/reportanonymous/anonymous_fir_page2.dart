@@ -6,17 +6,15 @@ class AnonymousDetails extends StatefulWidget {
   final String title;
 
   _AnonymousCaseDetailsPage createState() => _AnonymousCaseDetailsPage();
-
 }
 
 class _AnonymousCaseDetailsPage extends State<AnonymousDetails> {
-
   String titleCase;
   String description;
   String suspect;
 
-  Widget build (BuildContext context) {
-    return Scaffold (
+  Widget build(BuildContext context) {
+    return Scaffold(
       appBar: AppBar(),
       body: SingleChildScrollView(
         child: Center(
@@ -33,9 +31,8 @@ class _AnonymousCaseDetailsPage extends State<AnonymousDetails> {
                     labelText: 'Case Type',
                     enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(
-                          color: Colors.blue,
-                        )
-                    ),
+                      color: Colors.blue,
+                    )),
                     border: OutlineInputBorder(),
                   ),
                   onChanged: (value) {
@@ -43,7 +40,6 @@ class _AnonymousCaseDetailsPage extends State<AnonymousDetails> {
                       titleCase = value;
                     });
                   },
-
                 ),
               ),
               Padding(
@@ -53,9 +49,8 @@ class _AnonymousCaseDetailsPage extends State<AnonymousDetails> {
                     labelText: 'Case Title',
                     enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(
-                          color: Colors.blue,
-                        )
-                    ),
+                      color: Colors.blue,
+                    )),
                     border: OutlineInputBorder(),
                   ),
                   onChanged: (value) {
@@ -63,11 +58,8 @@ class _AnonymousCaseDetailsPage extends State<AnonymousDetails> {
                       titleCase = value;
                     });
                   },
-
                 ),
               ),
-
-
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
                 child: TextField(
@@ -77,9 +69,8 @@ class _AnonymousCaseDetailsPage extends State<AnonymousDetails> {
                     labelText: 'Case Description',
                     enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(
-                          color: Colors.blue,
-                        )
-                    ),
+                      color: Colors.blue,
+                    )),
                     border: OutlineInputBorder(),
                   ),
                   onChanged: (value) {
@@ -87,10 +78,8 @@ class _AnonymousCaseDetailsPage extends State<AnonymousDetails> {
                       description = value;
                     });
                   },
-
                 ),
               ),
-
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
                 child: TextField(
@@ -98,9 +87,8 @@ class _AnonymousCaseDetailsPage extends State<AnonymousDetails> {
                     labelText: 'Evidence(if any photo/video/docx.etc)',
                     enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(
-                          color: Colors.blue,
-                        )
-                    ),
+                      color: Colors.blue,
+                    )),
                     border: OutlineInputBorder(),
                   ),
                   onChanged: (value) {
@@ -108,45 +96,37 @@ class _AnonymousCaseDetailsPage extends State<AnonymousDetails> {
                       suspect = value;
                     });
                   },
-
                 ),
               ),
-
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 8.0),
                 child: MaterialButton(
-                  child: Text('Submit',
+                  child: Text(
+                    'Submit',
                     style: TextStyle(
                       color: Colors.white,
-                    ),),
+                    ),
+                  ),
                   color: Colors.blue,
                   onPressed: () {
-
                     print(titleCase);
                     print(description);
                     print(suspect);
-
                   },
                 ),
               ),
-
             ],
           ),
         ),
       ),
-
       floatingActionButton: FloatingActionButton(
         elevation: 5.0,
         child: new Icon(Icons.chevron_right),
         backgroundColor: Colors.blue,
         onPressed: () {
-          Navigator.of(context).push(MaterialPageRoute(
-              builder: (BuildContext context) => (UserRegistration())
-          ));
+          //TODO ADD
         },
       ),
     );
-
   }
-
 }

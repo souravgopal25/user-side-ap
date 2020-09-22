@@ -10,8 +10,10 @@ class Alerts extends StatelessWidget {
       appBar: AppBar(
         title: Text("Alerts"),
       ),
-      body: Column(
-        children: [AlertCard(), AlertCard()],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [AlertCard(), AlertCard()],
+        ),
       ),
     );
   }

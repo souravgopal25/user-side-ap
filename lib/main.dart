@@ -5,6 +5,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:user_side_ap/page/report/firpage1.dart';
 import 'package:user_side_ap/page/signup_page.dart';
 
+import 'dashboard1.dart';
+
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(MaterialApp(
@@ -28,7 +30,7 @@ class _MyHomeState extends State<MyHome> {
         builder: (context, snapshot) {
           if (snapshot.hasError) {}
           if (snapshot.connectionState == ConnectionState.done) {
-            return UserRegistration();
+            return Dashboard();
           }
           return Scaffold(
             body: Center(
