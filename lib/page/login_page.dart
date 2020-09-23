@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:user_side_ap/form/login_form.dart';
-
 import 'package:user_side_ap/page/signup_page.dart';
 
 class LoginPage extends StatefulWidget {
@@ -41,12 +40,12 @@ class _LoginPageState extends State<LoginPage> {
                         passController: passController),
                     RaisedButton(
                       onPressed: () {
-                        /*   Navigator.push(
+                        Navigator.push(
                             context,
                             new MaterialPageRoute(
-                                builder: (context) => SignupPage()));*/
+                                builder: (context) => SignupPage()));
                       },
-                      child: Text("SIgnup-form"),
+                      child: Text("Sign-up"),
                     )
                   ],
                 ),

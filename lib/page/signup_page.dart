@@ -1,8 +1,6 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:user_side_ap/form/login_form.dart';
+
 import 'package:user_side_ap/form/signup_form.dart';
-import 'package:user_side_ap/page/dashboard.dart';
 
 class SignupPage extends StatelessWidget {
   final emailController = TextEditingController();
@@ -12,15 +10,15 @@ class SignupPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LoginPage(
+    return Signup(
         formKey: _formKey,
         emailController: emailController,
         passController: passController);
   }
 }
 
-class LoginPage extends StatelessWidget {
-  const LoginPage({
+class Signup extends StatelessWidget {
+  const Signup({
     Key key,
     @required GlobalKey<FormState> formKey,
     @required this.emailController,
