@@ -4,20 +4,18 @@ import 'package:flutter/material.dart';
 import 'anonymous_fir_page2.dart';
 
 class AnonymousRegistration extends StatefulWidget {
-  AnonymousRegistration({Key key, this.title}) : super(key: key);
-
   final String title;
+
+  AnonymousRegistration({Key key, this.title}) : super(key: key);
 
   _AnonymousPageState createState() => _AnonymousPageState();
 }
 
 class _AnonymousPageState extends State<AnonymousRegistration> {
   String state;
-  var _states = ['sikkim', 'andra pradesh', 'odissa', 'others'];
-  var _currentItemSelected1 = 'odissa';
+
   String city;
-  var _cities = ['Bhubneshswar', 'Berhampur', 'Cuttuck', 'others'];
-  var _currentItemSelected2 = 'Berhampur';
+
   String district;
   String policestation;
   String otp;
