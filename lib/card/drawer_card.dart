@@ -10,12 +10,13 @@ class Menu extends StatelessWidget {
         padding: EdgeInsets.zero,
         children: <Widget>[
           UserAccountsDrawerHeader(
+            decoration: BoxDecoration(color: Colors.white24),
             accountName: Text(
               "Sourav Sharma",
-              style: TextStyle(fontSize: 20),
+              style: TextStyle(fontSize: 20, color: Colors.black),
             ),
-            accountEmail:
-                Text("souravgopal25@gmail.com", style: TextStyle(fontSize: 15)),
+            accountEmail: Text("souravgopal25@gmail.com",
+                style: TextStyle(fontSize: 15, color: Colors.black)),
             currentAccountPicture: CircleAvatar(
               radius: 100.0,
               backgroundImage: NetworkImage(
