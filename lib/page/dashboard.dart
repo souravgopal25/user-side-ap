@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:user_side_ap/card/drawer_card.dart';
+import 'package:user_side_ap/models/news.dart';
 import 'package:user_side_ap/page/alerts.dart';
 import 'package:user_side_ap/page/news_page.dart';
 import 'package:user_side_ap/page/report/fir_page1.dart';
@@ -48,149 +49,186 @@ class Dashboard extends StatelessWidget {
         backgroundColor: Colors.white,
         iconTheme: IconThemeData(color: Colors.black),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: DashBoardSlider(),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: RaisedButton(
-                  elevation: 10,
-                  color: Colors.redAccent,
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        new MaterialPageRoute(
-                            builder: (context) => AnonymousRegistration()));
-                  },
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Text("Report Annomously",
-                          style: TextStyle(fontSize: 40, color: Colors.white))
-                    ],
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: RaisedButton(
-                  elevation: 10,
-                  color: Colors.redAccent,
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        new MaterialPageRoute(
-                            builder: (context) => UserRegistration()));
-                  },
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Icon(
-                        Icons.report,
-                        color: Colors.white,
-                        size: 80,
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Text("Report a FIR",
-                          style: TextStyle(fontSize: 40, color: Colors.white))
-                    ],
-                  ),
-                ),
-              ),
-              Padding(
+      body: Container(
+        height: MediaQuery.of(context).size.height,
+        color: Colors.red[400],
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: <Widget>[
+                Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: RaisedButton(
-                    elevation: 10,
-                    color: Colors.redAccent,
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          new MaterialPageRoute(
-                              builder: (context) => Updates()));
-                    },
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Icon(
-                          Icons.update,
-                          color: Colors.white,
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Text("Updates",
-                            style: TextStyle(fontSize: 40, color: Colors.white))
-                      ],
+                  child: DashBoardSlider(),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                    height: MediaQuery.of(context).size.height * 0.55,
+                    child: Card(
+                      elevation: 100,
+                      shadowColor: Colors.black,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: <Widget>[
+                              ButtonTheme(
+                                buttonColor: Colors.lightBlueAccent,
+                                splashColor: Colors.red,
+                                minWidth: 350,
+                                height:
+                                    MediaQuery.of(context).size.height * 0.15,
+                                child: RaisedButton(
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius:
+                                          BorderRadius.circular(15.0)),
+                                  onPressed: () {
+                                    new MaterialPageRoute(
+                                        builder: (context) =>
+                                            AnonymousRegistration());
+                                  },
+                                  child: Column(
+                                    children: [
+                                      Icon(
+                                        Icons.new_releases,
+                                        size: 40,
+                                        color: Colors.white,
+                                      ),
+                                      Text(
+                                        "Report Annomously",
+                                        style: TextStyle(
+                                            color: Colors.white, fontSize: 42),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: <Widget>[
+                              ButtonTheme(
+                                buttonColor: Colors.lightBlueAccent,
+                                splashColor: Colors.red,
+                                minWidth: 350,
+                                height:
+                                    MediaQuery.of(context).size.height * 0.15,
+                                child: RaisedButton(
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius:
+                                          BorderRadius.circular(15.0)),
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        new MaterialPageRoute(
+                                            builder: (context) =>
+                                                UserRegistration()));
+                                  },
+                                  child: Column(
+                                    children: [
+                                      Icon(
+                                        Icons.account_balance,
+                                        size: 40,
+                                        color: Colors.white,
+                                      ),
+                                      Text(
+                                        "Register FIR",
+                                        style: TextStyle(
+                                            color: Colors.white, fontSize: 42),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: <Widget>[
+                              ButtonTheme(
+                                buttonColor: Colors.lightBlueAccent,
+                                splashColor: Colors.red,
+                                minWidth: 165,
+                                height:
+                                    MediaQuery.of(context).size.height * 0.15,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(15.0)),
+                                child: RaisedButton(
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        new MaterialPageRoute(
+                                            builder: (context) => Alerts()));
+                                  },
+                                  child: Column(
+                                    children: [
+                                      Icon(
+                                        Icons.notification_important,
+                                        size: 40,
+                                        color: Colors.white,
+                                      ),
+                                      Text(
+                                        "Alerts",
+                                        style: TextStyle(
+                                            color: Colors.white, fontSize: 42),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              ButtonTheme(
+                                buttonColor: Colors.lightBlueAccent,
+                                splashColor: Colors.red,
+                                minWidth: 165,
+                                height:
+                                    MediaQuery.of(context).size.height * 0.15,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(15.0)),
+                                child: RaisedButton(
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        new MaterialPageRoute(
+                                            builder: (context) => NewsPage()));
+                                  },
+                                  child: Column(
+                                    children: [
+                                      Icon(
+                                        Icons.sms,
+                                        color: Colors.white,
+                                        size: 40,
+                                      ),
+                                      Text(
+                                        "News",
+                                        style: TextStyle(
+                                            color: Colors.white, fontSize: 42),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
+                          )
+                        ],
+                      ),
                     ),
-                  )),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: RaisedButton(
-                  elevation: 10,
-                  color: Colors.redAccent,
-                  onPressed: () {
-                    Navigator.push(context,
-                        new MaterialPageRoute(builder: (context) => Alerts()));
-                  },
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Icon(
-                        Icons.add_alert,
-                        color: Colors.white,
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Text("Alerts",
-                          style: TextStyle(fontSize: 40, color: Colors.white))
-                    ],
                   ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: RaisedButton(
-                  elevation: 10,
-                  color: Colors.redAccent,
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        new MaterialPageRoute(
-                            builder: (context) => NewsPage()));
-                  },
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Icon(
-                        Icons.adjust,
-                        color: Colors.white,
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Text("News",
-                          style: TextStyle(fontSize: 40, color: Colors.white))
-                    ],
-                  ),
-                ),
-              ),
-            ],
+                )
+              ],
+            ),
           ),
         ),
       ),

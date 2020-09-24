@@ -18,6 +18,9 @@ class DashBoardSlider extends StatelessWidget {
                 image: AssetImage("assets/logo.jpg"),
                 fit: BoxFit.fitHeight,
               )),
+          child: InkWell(
+            onTap: () {},
+          ),
         ),
         Container(
           margin: EdgeInsets.all(5.0),
@@ -48,7 +51,7 @@ class DashBoardSlider extends StatelessWidget {
         autoPlayCurve: Curves.fastOutSlowIn,
         enableInfiniteScroll: true,
         autoPlayAnimationDuration: Duration(milliseconds: 1000),
-        viewportFraction: 0.8,
+        viewportFraction: 0.9,
       ),
     );
   }

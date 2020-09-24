@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:firebase_core/firebase_core.dart';
+import 'package:user_side_ap/page/dashboard.dart';
 import 'package:user_side_ap/page/signup_page.dart';
 
 void main() {
@@ -26,7 +27,7 @@ class _MyHomeState extends State<MyHome> {
         builder: (context, snapshot) {
           if (snapshot.hasError) {}
           if (snapshot.connectionState == ConnectionState.done) {
-            return SignupPage();
+            return Dashboard();
           }
           return Scaffold(
             body: Center(
