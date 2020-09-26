@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:user_side_ap/models/fir_info.dart';
 
 import 'fir_page2.dart';
 
@@ -61,138 +62,143 @@ class _MyHomePageState extends State<UserRegistration> {
         ),
         body: SingleChildScrollView(
           child: Center(
-            child: Column(
-              //children: Image.asset('assets/images/logo.png',
-              //height: 100.0,
-              //width: 100.0,),
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                //children: Image.asset('assets/images/logo.png',
+                //height: 100.0,
+                //width: 100.0,),
 
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
-                SizedBox(
-                  height: 20.0,
-                ),
-
-                // CircleAvatar(
-                //  backgroundColor: Colors.blue,
-                //  radius: 50.0),
-
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: 1.0, horizontal: 1.0),
-                  child: Divider(),
-                ),
-                Padding(
-                  padding:
-                      EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
-                  child: TextField(
-                    decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.location_city),
-                      labelText: 'State',
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.blue),
-                      ),
-                      border: OutlineInputBorder(),
-                    ),
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  SizedBox(
+                    height: 20.0,
                   ),
-                ),
 
-                Padding(
-                  padding:
-                      EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
-                  child: TextField(
-                    decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.location_city),
-                      labelText: 'City',
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.blue),
-                      ),
-                      border: OutlineInputBorder(),
-                    ),
-                    onChanged: (value) {
-                      setState(() {
-                        city = value;
-                      });
-                    },
-                  ),
-                ),
+                  // CircleAvatar(
+                  //  backgroundColor: Colors.blue,
+                  //  radius: 50.0),
 
-                Padding(
-                  padding:
-                      EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
-                  child: TextField(
-                    decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.location_city),
-                      labelText: 'District',
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.blue),
-                      ),
-                      border: OutlineInputBorder(),
-                    ),
-                    onChanged: (value) {
-                      setState(() {
-                        district = value;
-                      });
-                    },
+                  Padding(
+                    padding:
+                        EdgeInsets.symmetric(vertical: 1.0, horizontal: 1.0),
+                    child: Divider(),
                   ),
-                ),
-
-                Padding(
-                  padding:
-                      EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
-                  child: TextField(
-                    decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.business),
-                      labelText: 'Police Station',
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.blue),
-                      ),
-                      border: OutlineInputBorder(),
-                    ),
-                    onChanged: (value) {
-                      setState(() {
-                        policestation = value;
-                      });
-                    },
-                  ),
-                ),
-                Padding(
-                  padding:
-                      EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
-                  child: TextField(
-                    decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.phone_android),
-                      labelText: 'OTP',
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.blue),
-                      ),
-                      border: OutlineInputBorder(),
-                    ),
-                    onChanged: (value) {
-                      setState(() {
-                        otp = value;
-                      });
-                    },
-                  ),
-                ),
-                Padding(
-                  padding:
-                      EdgeInsets.symmetric(horizontal: 10.0, vertical: 8.0),
-                  child: MaterialButton(
-                    child: Text(
-                      'Get OTP',
-                      style: TextStyle(
-                        color: Colors.white,
+                  Padding(
+                    padding:
+                        EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+                    child: TextField(
+                      decoration: InputDecoration(
+                        prefixIcon: Icon(Icons.location_city),
+                        labelText: 'State',
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.blue),
+                        ),
+                        border: OutlineInputBorder(),
                       ),
                     ),
-                    color: Colors.blue,
-                    onPressed: () {
-                      print(state);
-                      print(city);
-                      print(policestation);
-                      print(otp);
-                    },
                   ),
-                )
-              ],
+
+                  Padding(
+                    padding:
+                        EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+                    child: TextField(
+                      decoration: InputDecoration(
+                        prefixIcon: Icon(Icons.location_city),
+                        labelText: 'City',
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.blue),
+                        ),
+                        border: OutlineInputBorder(),
+                      ),
+                      onChanged: (value) {
+                        setState(() {
+                          city = value;
+                        });
+                      },
+                    ),
+                  ),
+
+                  Padding(
+                    padding:
+                        EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+                    child: TextField(
+                      decoration: InputDecoration(
+                        prefixIcon: Icon(Icons.location_city),
+                        labelText: 'District',
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.blue),
+                        ),
+                        border: OutlineInputBorder(),
+                      ),
+                      onChanged: (value) {
+                        setState(() {
+                          district = value;
+                        });
+                      },
+                    ),
+                  ),
+
+                  Padding(
+                    padding:
+                        EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+                    child: TextField(
+                      decoration: InputDecoration(
+                        prefixIcon: Icon(Icons.business),
+                        labelText: 'Police Station',
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.blue),
+                        ),
+                        border: OutlineInputBorder(),
+                      ),
+                      onChanged: (value) {
+                        setState(() {
+                          policestation = value;
+                        });
+                      },
+                    ),
+                  ),
+
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: ButtonTheme(
+                      buttonColor: Colors.lightBlueAccent,
+                      splashColor: Colors.red,
+                      minWidth: MediaQuery.of(context).size.width * 0.8,
+                      height: MediaQuery.of(context).size.height * 0.07,
+                      child: RaisedButton(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15.0)),
+                        onPressed: () {
+                          //Creating object to pass to nextpage
+                          var detail = FirDetails(
+                              state: state,
+                              city: city,
+                              district: district,
+                              policeStation: policestation);
+                          print(detail.toString());
+
+                          Navigator.push(
+                              context,
+                              new MaterialPageRoute(
+                                  builder: (context) => CaseDetails(
+                                        details: detail,
+                                      )));
+                        },
+                        child: Column(
+                          children: [
+                            Text(
+                              "Next",
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 42),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
