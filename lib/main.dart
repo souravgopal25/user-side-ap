@@ -27,7 +27,7 @@ class _MyHomeState extends State<MyHome> {
         builder: (context, snapshot) {
           if (snapshot.hasError) {}
           if (snapshot.connectionState == ConnectionState.done) {
-            return Dashboard();
+            return SignupPage();
           }
           return Scaffold(
             body: Center(

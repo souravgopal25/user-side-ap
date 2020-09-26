@@ -22,6 +22,11 @@ class SignupForm extends StatefulWidget {
 }
 
 class _SignupFormState extends State<SignupForm> {
+  //TODO ADD CONTROLERS FOR THE FIELD YOU WANT
+  final nameController = TextEditingController();
+  final ageController = TextEditingController();
+  final phoneController = TextEditingController();
+  String gender = '';
   Future<bool> loginUser(String phone, BuildContext context) async {
     FirebaseAuth _auth = FirebaseAuth.instance;
     _auth.verifyPhoneNumber(
@@ -44,7 +49,7 @@ class _SignupFormState extends State<SignupForm> {
               barrierDismissible: false,
               builder: (context) {
                 return AlertDialog(
-                  title: Text("Give the code?"),
+                  title: Text("Enter the OTP "),
                   content: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
@@ -88,16 +93,113 @@ class _SignupFormState extends State<SignupForm> {
         });
   }
 
-  final phoneController = TextEditingController();
+  int _radioValue1 = -1;
+  void _handleRadioValueChange1(int value) {
+    setState(() {
+      _radioValue1 = value;
+      switch (_radioValue1) {
+        case 0:
+          gender = "male";
+          break;
+
+        case 1:
+          gender = "female";
+          break;
+
+        case 2:
+          gender = "Not to Specify";
+          break;
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Form(
       key: widget._formKey,
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           children: <Widget>[
+            TextFormField(
+              keyboardType: TextInputType.name,
+              controller: nameController,
+              validator: (String value) {
+                if (value.isEmpty) {
+                  return "Email Required";
+                }
+                return null;
+              },
+              decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  hintText: "Enter Name",
+                  labelText: "Name"),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Text(
+              "Select Your Gender",
+              style: TextStyle(
+                fontSize: 20,
+              ),
+              textDirection: TextDirection.ltr,
+            ),
+            Container(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Radio(
+                    value: 0,
+                    groupValue: _radioValue1,
+                    onChanged: _handleRadioValueChange1,
+                  ),
+                  Text(
+                    "Male",
+                    style: TextStyle(fontSize: 20),
+                  ),
+                  Radio(
+                    value: 1,
+                    groupValue: _radioValue1,
+                    onChanged: _handleRadioValueChange1,
+                  ),
+                  Text(
+                    "Female",
+                    style: TextStyle(fontSize: 20),
+                  ),
+                  Radio(
+                    value: 2,
+                    groupValue: _radioValue1,
+                    onChanged: _handleRadioValueChange1,
+                  ),
+                  Text(
+                    "Others",
+                    style: TextStyle(fontSize: 20),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 5,
+            ),
+            TextFormField(
+              keyboardType: TextInputType.number,
+              maxLength: 2,
+              controller: ageController,
+              validator: (String value) {
+                if (value.isEmpty) {
+                  return "Age Required";
+                } else if (int.parse(value) > 10 && int.parse(value) <= 120) {
+                  return "Enter correct age";
+                } else {
+                  return null;
+                }
+              },
+              decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  hintText: "Enter Age",
+                  labelText: "Age"),
+            ),
             TextFormField(
               keyboardType: TextInputType.phone,
               controller: phoneController,
@@ -114,7 +216,7 @@ class _SignupFormState extends State<SignupForm> {
                   labelText: "Phone"),
             ),
             SizedBox(
-              height: 20,
+              height: 5,
             ),
             TextFormField(
               keyboardType: TextInputType.emailAddress,
