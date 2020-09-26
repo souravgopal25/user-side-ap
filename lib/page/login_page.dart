@@ -57,31 +57,34 @@ class _LoginPageState extends State<LoginPage> {
             child: SingleChildScrollView(
               child: Padding(
                 padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  children: <Widget>[
-                    Container(
-                      child: Text(
-                        "Login",
-                        style: TextStyle(fontSize: 100, color: Colors.blue),
+                child: Card(
+                  elevation: 15,
+                  child: Column(
+                    children: <Widget>[
+                      Container(
+                        child: Text(
+                          "Login",
+                          style: TextStyle(fontSize: 100, color: Colors.blue),
+                        ),
                       ),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    LoginForm(
-                        formKey: _formKey,
-                        emailController: emailController,
-                        passController: passController),
-                    RaisedButton(
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            new MaterialPageRoute(
-                                builder: (context) => SignupPage()));
-                      },
-                      child: Text("Sign-up"),
-                    )
-                  ],
+                      SizedBox(
+                        height: 20,
+                      ),
+                      LoginForm(
+                          formKey: _formKey,
+                          emailController: emailController,
+                          passController: passController),
+                      RaisedButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              new MaterialPageRoute(
+                                  builder: (context) => SignupPage()));
+                        },
+                        child: Text("Sign-up"),
+                      )
+                    ],
+                  ),
                 ),
               ),
             ),
