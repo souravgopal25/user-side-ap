@@ -144,30 +144,42 @@ class _LoginFormState extends State<LoginForm> {
                   hintText: "Enter Password",
                   labelText: "Password"),
             ),
-            RaisedButton(
-              onPressed: () async {
-                if (!widget._formKey.currentState.validate()) {
-                  return;
-                } else {
-                  FirebaseAuth _auth = FirebaseAuth.instance;
+            ButtonTheme(
+              buttonColor: Colors.lightBlueAccent,
+              splashColor: Colors.red,
+              minWidth: MediaQuery.of(context).size.shortestSide,
+              height: MediaQuery.of(context).size.height * 0.05,
+              child: RaisedButton(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15.0)),
+                onPressed: () async {
                   if (!widget._formKey.currentState.validate()) {
                     return;
                   } else {
-                    var result1 = await _auth.signInWithEmailAndPassword(
-                        email: widget.emailController.text.trim(),
-                        password: widget.passController.text.trim());
-                    User user = result1.user;
-                    if (user != null) {
-                      loginUser(
-                          "+91" + widget.phoneController.text.trim(), context);
+                    FirebaseAuth _auth = FirebaseAuth.instance;
+                    if (!widget._formKey.currentState.validate()) {
+                      return;
+                    } else {
+                      var result1 = await _auth.signInWithEmailAndPassword(
+                          email: widget.emailController.text.trim(),
+                          password: widget.passController.text.trim());
+                      User user = result1.user;
+                      if (user != null) {
+                        loginUser("+91" + widget.phoneController.text.trim(),
+                            context);
+                      }
                     }
                   }
-                }
-              },
-              focusElevation: 10,
-              textColor: Colors.white,
-              color: Colors.lightBlueAccent,
-              child: Text("Sign - In"),
+                },
+                child: Column(
+                  children: [
+                    Text(
+                      "Sign-in",
+                      style: TextStyle(color: Colors.white, fontSize: 42),
+                    ),
+                  ],
+                ),
+              ),
             ),
           ],
         ),

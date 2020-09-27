@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:user_side_ap/models/annonymous_info.dart';
 
 import 'anonymous_fir_page2.dart';
 
@@ -18,7 +19,6 @@ class _AnonymousPageState extends State<AnonymousRegistration> {
 
   String district;
   String policestation;
-  String otp;
 
   @override
   Widget build(BuildContext context) {
@@ -150,6 +150,42 @@ class _AnonymousPageState extends State<AnonymousRegistration> {
                         policestation = value;
                       });
                     },
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ButtonTheme(
+                    buttonColor: Colors.lightBlueAccent,
+                    splashColor: Colors.red,
+                    minWidth: MediaQuery.of(context).size.width * 0.8,
+                    height: MediaQuery.of(context).size.height * 0.07,
+                    child: RaisedButton(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15.0)),
+                      onPressed: () {
+                        //Creating object to pass to nextpage
+                        var detail = AnnonyDetailModel(
+                            state: state,
+                            city: city,
+                            district: district,
+                            policeStation: policestation);
+                        print(detail.toJson());
+                        Navigator.push(
+                            context,
+                            new MaterialPageRoute(
+                                builder: (context) => AnonymousDetails(
+                                      detailModel: detail,
+                                    )));
+                      },
+                      child: Column(
+                        children: [
+                          Text(
+                            "Next",
+                            style: TextStyle(color: Colors.white, fontSize: 42),
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
                 ),
               ],

@@ -1,14 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:user_side_ap/models/annonymous_info.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:user_side_ap/page/dashboard.dart';
 
 class AnonymousDetails extends StatefulWidget {
-  AnonymousDetails({Key key, this.title}) : super(key: key);
+  final AnnonyDetailModel detailModel;
+  AnonymousDetails({Key key, this.detailModel}) : super(key: key);
 
-  final String title;
-
-  _AnonymousCaseDetailsPage createState() => _AnonymousCaseDetailsPage();
+  _AnonymousCaseDetailsPage createState() =>
+      _AnonymousCaseDetailsPage(detailModel);
 }
 
 class _AnonymousCaseDetailsPage extends State<AnonymousDetails> {
+  _AnonymousCaseDetailsPage(this.detailModel);
+  final AnnonyDetailModel detailModel;
+  String caseType;
   String titleCase;
   String description;
   String suspect;
@@ -132,20 +138,41 @@ class _AnonymousCaseDetailsPage extends State<AnonymousDetails> {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 8.0),
-                child: MaterialButton(
-                  child: Text(
-                    'Submit',
-                    style: TextStyle(
-                      color: Colors.white,
+                padding: const EdgeInsets.all(8.0),
+                child: ButtonTheme(
+                  buttonColor: Colors.lightBlueAccent,
+                  splashColor: Colors.red,
+                  minWidth: MediaQuery.of(context).size.width * 0.8,
+                  height: MediaQuery.of(context).size.height * 0.07,
+                  child: RaisedButton(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15.0)),
+                    onPressed: () async {
+                      print(detailModel);
+                      detailModel.titleCase = titleCase;
+                      detailModel.description = description;
+                      detailModel.suspect = suspect;
+                      await Firestore.instance
+                          .collection("Reports-An")
+                          .doc(detailModel.city)
+                          .set(detailModel.toMap());
+                      print(detailModel.toMap());
+
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  (Dashboard())));
+                    },
+                    child: Column(
+                      children: [
+                        Text(
+                          "Submit",
+                          style: TextStyle(color: Colors.white, fontSize: 42),
+                        ),
+                      ],
                     ),
                   ),
-                  color: Colors.blue,
-                  onPressed: () {
-                    print(titleCase);
-                    print(description);
-                    print(suspect);
-                  },
                 ),
               ),
             ],

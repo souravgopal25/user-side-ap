@@ -89,9 +89,11 @@ class Dashboard extends StatelessWidget {
                                       borderRadius:
                                           BorderRadius.circular(15.0)),
                                   onPressed: () {
-                                    new MaterialPageRoute(
-                                        builder: (context) =>
-                                            AnonymousRegistration());
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                AnonymousRegistration()));
                                   },
                                   child: Column(
                                     children: [

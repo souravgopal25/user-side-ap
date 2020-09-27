@@ -6,10 +6,12 @@ class CaseDetails extends StatefulWidget {
   final FirDetails details;
   CaseDetails({Key key, this.details}) : super(key: key);
 
-  _CaseDetailsPage createState() => _CaseDetailsPage();
+  _CaseDetailsPage createState() => _CaseDetailsPage(details);
 }
 
 class _CaseDetailsPage extends State<CaseDetails> {
+  final FirDetails object;
+  _CaseDetailsPage(this.object);
   String caseType;
   String titleCase;
   String description;
@@ -150,11 +152,12 @@ class _CaseDetailsPage extends State<CaseDetails> {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(15.0)),
                       onPressed: () async {
-                        widget.details.caseType = caseType;
-                        widget.details.caseTitle = titleCase;
-                        widget.details.description = description;
-                        widget.details.suspect = suspect;
-                        print(widget.details.toMap());
+                        object.caseType = caseType;
+                        object.caseTitle = titleCase;
+                        object.description = description;
+                        object.suspect = suspect;
+                        print(object.toMap());
+
                         var x = await Firestore.instance
                             .collection("FIR")
                             .doc(widget.details.city)
