@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:firebase_core/firebase_core.dart';
-import 'package:user_side_ap/page/dashboard.dart';
+
 import 'package:user_side_ap/page/login_page.dart';
-import 'package:user_side_ap/page/signup_page.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
