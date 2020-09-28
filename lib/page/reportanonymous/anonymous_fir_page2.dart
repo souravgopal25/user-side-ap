@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:user_side_ap/models/annonymous_info.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:user_side_ap/page/dashboard.dart';
+import 'package:file_picker/file_picker.dart';
 
 class AnonymousDetails extends StatefulWidget {
   final AnnonyDetailModel detailModel;
@@ -137,6 +138,25 @@ class _AnonymousCaseDetailsPage extends State<AnonymousDetails> {
                   },
                 ),
               ),
+
+              RaisedButton(
+                onPressed: () async{
+                  FilePickerResult result = await FilePicker.platform.pickFiles();
+
+                  if(result != null) {
+                    PlatformFile file = result.files.first;
+
+                    print(file.name);
+                    print(file.bytes);
+                    print(file.size);
+                    print(file.extension);
+                    print(file.path);
+                  }
+                },
+              ),
+
+
+
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: ButtonTheme(
