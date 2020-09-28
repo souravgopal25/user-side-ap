@@ -31,9 +31,41 @@ class AlertCard extends StatelessWidget {
               ),
             ),
             Padding(
+              padding: const EdgeInsets.fromLTRB(8.0, 0, 8.0, 0),
+              child: Row(
+                children: <Widget>[
+                  Text(
+                    "Alert Time :",
+                    softWrap: true,
+                    style: TextStyle(fontSize: 22),
+                  ),
+                  Text(
+                    "20:40 AM",
+                    style: TextStyle(fontSize: 22),
+                  )
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(8.0, 0, 8.0, 0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Expanded(
+                      child: Text(
+                    "Assam Security forces in search of 5 terror",
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      fontSize: 20,
+                    ),
+                  )),
+                ],
+              ),
+            ),
+            Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ut tempor lacus. Vivamus quis elementum diam. Nunc tellus tortor, lobortis non euismod id, pharetra id mi. Cras sit amet nulla pharetra, suscipit lacus nec, vestibulum lacus. Etiam rutrum ex vitae maximus porttitor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam condimentum tristique dolor. Cras sed ante leo. Praesent egestas est mi, eget mattis dolor venenatis eu. Morbi laoreet pulvinar efficitur. Pellentesque eu faucibus dui. Sed tempor ultricies justo id dignissim. In ac purus nisl. Aliquam ullamcorper quis magna eget rhoncus. Nunc.",
+                "Bangladesh-based jehadi terror module Jamat-ul Mujahideen Bangladesh has been active in the state and several operatives of the JMB were arrested in state in past. ",
                 softWrap: true,
                 style: TextStyle(fontSize: 15),
               ),

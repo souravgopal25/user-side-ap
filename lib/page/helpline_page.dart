@@ -43,15 +43,41 @@ class Helpline extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Center(
-          child: ListView(
-            children: <Widget>[
-              Text("Helpline"),
-              Text("DG Control"),
-              Text("0361)-2521242"),
-              Text("City Police Control"),
-              Text("0361)-2464557/8"),
-              Text("Dial 100"),
-            ],
+          child: Card(
+            child: ListView(
+              children: <Widget>[
+                Text(
+                  "Helpline",
+                  textScaleFactor: 3.5,
+                  textAlign: TextAlign.center,
+                ),
+                Text(
+                  "DG Control",
+                  textScaleFactor: 3.5,
+                  textAlign: TextAlign.center,
+                ),
+                Text(
+                  "0361-2521242",
+                  textScaleFactor: 3.5,
+                  textAlign: TextAlign.center,
+                ),
+                Text(
+                  "City Police Control",
+                  textScaleFactor: 3.5,
+                  textAlign: TextAlign.center,
+                ),
+                Text(
+                  "0361-2464557/8",
+                  textScaleFactor: 3.5,
+                  textAlign: TextAlign.center,
+                ),
+                Text(
+                  "Dial 100",
+                  textScaleFactor: 3.5,
+                  textAlign: TextAlign.center,
+                ),
+              ],
+            ),
           ),
         ),
       ),
