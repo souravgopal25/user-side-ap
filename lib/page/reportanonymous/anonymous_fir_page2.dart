@@ -140,6 +140,7 @@ class _AnonymousCaseDetailsPage extends State<AnonymousDetails> {
               ),
 
               RaisedButton(
+                child: Text("Choose file/image from file manager"),
                 onPressed: () async{
                   FilePickerResult result = await FilePicker.platform.pickFiles();
 
