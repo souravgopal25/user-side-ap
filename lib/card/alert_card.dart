@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class AlertCard extends StatelessWidget {
-  const AlertCard({
-    Key key,
-  }) : super(key: key);
+  QueryDocumentSnapshot snapshot;
+  AlertCard({
+    QueryDocumentSnapshot snapshot1,
+  }) : snapshot = snapshot1;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +26,7 @@ class AlertCard extends StatelessWidget {
                     style: TextStyle(fontSize: 22),
                   ),
                   Text(
-                    "20/09/2020",
+                    snapshot.data()["date"],
                     style: TextStyle(fontSize: 22),
                   )
                 ],
@@ -40,7 +42,7 @@ class AlertCard extends StatelessWidget {
                     style: TextStyle(fontSize: 22),
                   ),
                   Text(
-                    "20:40 AM",
+                    snapshot.data()["time"],
                     style: TextStyle(fontSize: 22),
                   )
                 ],
@@ -53,7 +55,7 @@ class AlertCard extends StatelessWidget {
                 children: [
                   Expanded(
                       child: Text(
-                    "Assam Security forces in search of 5 terror",
+                    snapshot.data()["title"],
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                       fontSize: 20,
@@ -65,7 +67,7 @@ class AlertCard extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
-                "Bangladesh-based jehadi terror module Jamat-ul Mujahideen Bangladesh has been active in the state and several operatives of the JMB were arrested in state in past. ",
+                snapshot.data()["title"],
                 softWrap: true,
                 style: TextStyle(fontSize: 15),
               ),
