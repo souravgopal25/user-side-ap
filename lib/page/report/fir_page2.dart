@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:user_side_ap/models/fir_info.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:file_picker/file_picker.dart';
 
 class CaseDetails extends StatefulWidget {
   final FirDetails details;
@@ -12,10 +13,12 @@ class CaseDetails extends StatefulWidget {
 class _CaseDetailsPage extends State<CaseDetails> {
   final FirDetails object;
   _CaseDetailsPage(this.object);
+
   String caseType;
   String titleCase;
   String description;
   String suspect;
+  String evidence;
 
   Widget build(BuildContext context) {
     return Scaffold(
@@ -141,6 +144,44 @@ class _CaseDetailsPage extends State<CaseDetails> {
                     },
                   ),
                 ),
+
+                Padding(
+                  padding:
+                  EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+                  child: TextField(
+                    decoration: InputDecoration(
+                      labelText: 'Evidence(if any photo/video/docx.etc)',
+                      enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.blue,
+                          )),
+                      border: OutlineInputBorder(),
+                    ),
+                    onChanged: (value) {
+                      setState(() {
+                        evidence = value;
+                      });
+                    },
+                  ),
+                ),
+
+                RaisedButton(
+                    onPressed: () async{
+                      FilePickerResult result = await FilePicker.platform.pickFiles();
+
+                      if(result != null) {
+                        PlatformFile file = result.files.first;
+
+                        print(file.name);
+                        print(file.bytes);
+                        print(file.size);
+                        print(file.extension);
+                        print(file.path);
+                      }
+
+                    }
+                ),
+
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: ButtonTheme(
