@@ -16,14 +16,15 @@ class LoginForm extends StatefulWidget {
   final GlobalKey<FormState> _formKey;
   final TextEditingController emailController;
   final TextEditingController passController;
-  final phoneController = TextEditingController();
-  final otpController = TextEditingController();
+
   @override
   _LoginFormState createState() => _LoginFormState();
 }
 //TODO ADD BLOC
 
 class _LoginFormState extends State<LoginForm> {
+  final phoneController = TextEditingController();
+  final otpController = TextEditingController();
   Future<bool> loginUser(String phone, BuildContext context) async {
     FirebaseAuth _auth = FirebaseAuth.instance;
     _auth.verifyPhoneNumber(
@@ -51,7 +52,7 @@ class _LoginFormState extends State<LoginForm> {
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
                       TextField(
-                        controller: widget.otpController,
+                        controller: otpController,
                       ),
                     ],
                   ),
@@ -61,7 +62,7 @@ class _LoginFormState extends State<LoginForm> {
                       textColor: Colors.white,
                       color: Colors.blue,
                       onPressed: () async {
-                        final code = widget.otpController.text.trim();
+                        final code = otpController.text.trim();
                         AuthCredential credential =
                             PhoneAuthProvider.credential(
                                 verificationId: verificationID, smsCode: code);
@@ -99,9 +100,9 @@ class _LoginFormState extends State<LoginForm> {
         child: Column(
           children: <Widget>[
             TextFormField(
-              keyboardType: TextInputType.phone,
-              controller: widget.phoneController,
               maxLength: 10,
+              keyboardType: TextInputType.phone,
+              controller: phoneController,
               validator: (String value) {
                 if (value.isEmpty) {
                   return "Phone Required";
@@ -112,6 +113,9 @@ class _LoginFormState extends State<LoginForm> {
                   border: OutlineInputBorder(),
                   hintText: "Enter Phone",
                   labelText: "Phone"),
+            ),
+            SizedBox(
+              height: 20,
             ),
             TextFormField(
               keyboardType: TextInputType.emailAddress,
@@ -167,8 +171,7 @@ class _LoginFormState extends State<LoginForm> {
                           password: widget.passController.text.trim());
                       User user = result1.user;
                       if (user != null) {
-                        loginUser("+91" + widget.phoneController.text.trim(),
-                            context);
+                        loginUser("+91" + phoneController.text.trim(), context);
                       }
                     }
                   }

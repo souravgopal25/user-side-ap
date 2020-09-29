@@ -138,13 +138,13 @@ class _AnonymousCaseDetailsPage extends State<AnonymousDetails> {
                   },
                 ),
               ),
-
               RaisedButton(
                 child: Text("Choose file/image from file manager"),
-                onPressed: () async{
-                  FilePickerResult result = await FilePicker.platform.pickFiles();
+                onPressed: () async {
+                  FilePickerResult result =
+                      await FilePicker.platform.pickFiles();
 
-                  if(result != null) {
+                  if (result != null) {
                     PlatformFile file = result.files.first;
 
                     print(file.name);
@@ -155,9 +155,6 @@ class _AnonymousCaseDetailsPage extends State<AnonymousDetails> {
                   }
                 },
               ),
-
-
-
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: ButtonTheme(
@@ -170,9 +167,9 @@ class _AnonymousCaseDetailsPage extends State<AnonymousDetails> {
                         borderRadius: BorderRadius.circular(15.0)),
                     onPressed: () async {
                       print(detailModel);
-                      detailModel.titleCase = titleCase;
-                      detailModel.description = description;
-                      detailModel.suspect = suspect;
+                      detailModel.titleCase = titleCase.trim();
+                      detailModel.description = description.trim();
+                      detailModel.suspect = suspect.trim();
                       await Firestore.instance
                           .collection("Reports-An")
                           .doc(detailModel.city)

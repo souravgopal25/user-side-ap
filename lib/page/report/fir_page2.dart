@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:user_side_ap/models/fir_info.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:user_side_ap/page/dashboard.dart';
 
 class CaseDetails extends StatefulWidget {
   final FirDetails details;
@@ -14,11 +15,11 @@ class _CaseDetailsPage extends State<CaseDetails> {
   final FirDetails object;
   _CaseDetailsPage(this.object);
 
-  String caseType;
-  String titleCase;
-  String description;
-  String suspect;
-  String evidence;
+  final caseType = TextEditingController();
+  final titleCase = TextEditingController();
+  final description = TextEditingController();
+  final suspect = TextEditingController();
+  final evidence = TextEditingController();
 
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,6 +71,7 @@ class _CaseDetailsPage extends State<CaseDetails> {
                   padding:
                       EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
                   child: TextField(
+                    controller: caseType,
                     decoration: InputDecoration(
                       labelText: 'Case Type',
                       enabledBorder: OutlineInputBorder(
@@ -78,17 +80,13 @@ class _CaseDetailsPage extends State<CaseDetails> {
                       )),
                       border: OutlineInputBorder(),
                     ),
-                    onChanged: (value) {
-                      setState(() {
-                        caseType = value;
-                      });
-                    },
                   ),
                 ),
                 Padding(
                   padding:
                       EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
                   child: TextField(
+                    controller: titleCase,
                     decoration: InputDecoration(
                       labelText: 'Case Title',
                       enabledBorder: OutlineInputBorder(
@@ -97,17 +95,13 @@ class _CaseDetailsPage extends State<CaseDetails> {
                       )),
                       border: OutlineInputBorder(),
                     ),
-                    onChanged: (value) {
-                      setState(() {
-                        titleCase = value;
-                      });
-                    },
                   ),
                 ),
                 Padding(
                   padding:
                       EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
                   child: TextField(
+                    controller: description,
                     minLines: 2,
                     maxLines: 10,
                     decoration: InputDecoration(
@@ -118,17 +112,13 @@ class _CaseDetailsPage extends State<CaseDetails> {
                       )),
                       border: OutlineInputBorder(),
                     ),
-                    onChanged: (value) {
-                      setState(() {
-                        description = value;
-                      });
-                    },
                   ),
                 ),
                 Padding(
                   padding:
                       EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
                   child: TextField(
+                    controller: suspect,
                     decoration: InputDecoration(
                       labelText: 'Suspects(if any)',
                       enabledBorder: OutlineInputBorder(
@@ -137,52 +127,23 @@ class _CaseDetailsPage extends State<CaseDetails> {
                       )),
                       border: OutlineInputBorder(),
                     ),
-                    onChanged: (value) {
-                      setState(() {
-                        suspect = value;
-                      });
-                    },
                   ),
                 ),
-
                 Padding(
                   padding:
-                  EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+                      EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
                   child: TextField(
+                    controller: evidence,
                     decoration: InputDecoration(
                       labelText: 'Evidence(if any photo/video/docx.etc)',
                       enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(
-                            color: Colors.blue,
-                          )),
+                        color: Colors.blue,
+                      )),
                       border: OutlineInputBorder(),
                     ),
-                    onChanged: (value) {
-                      setState(() {
-                        evidence = value;
-                      });
-                    },
                   ),
                 ),
-
-                RaisedButton(
-                  child: Text("Choose file/image from file manager"),
-                    onPressed: () async{
-                      FilePickerResult result = await FilePicker.platform.pickFiles();
-
-                      if(result != null) {
-                        PlatformFile file = result.files.first;
-
-                        print(file.name);
-                        print(file.bytes);
-                        print(file.size);
-                        print(file.extension);
-                        print(file.path);
-                      }
-
-                    }
-                ),
-
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: ButtonTheme(
@@ -194,16 +155,20 @@ class _CaseDetailsPage extends State<CaseDetails> {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(15.0)),
                       onPressed: () async {
-                        object.caseType = caseType;
-                        object.caseTitle = titleCase;
-                        object.description = description;
-                        object.suspect = suspect;
+                        object.caseType = caseType.text.trim();
+                        object.caseTitle = titleCase.text.trim();
+                        object.description = description.text.trim();
+                        object.suspect = suspect.text.trim();
                         print(object.toMap());
 
                         var x = await Firestore.instance
                             .collection("FIR")
                             .doc(widget.details.city)
                             .set(widget.details.toMap());
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Dashboard()));
                       },
                       child: Column(
                         children: [
