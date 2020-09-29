@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:user_side_ap/models/fir_info.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:file_picker/file_picker.dart';
+
 import 'package:user_side_ap/page/dashboard.dart';
+import 'package:hive/hive.dart';
 
 class CaseDetails extends StatefulWidget {
   final FirDetails details;
@@ -162,9 +163,10 @@ class _CaseDetailsPage extends State<CaseDetails> {
                         print(object.toMap());
 
                         var x = await Firestore.instance
-                            .collection("FIR")
-                            .doc(widget.details.city)
-                            .set(widget.details.toMap());
+                            .collection("FIR1")
+                            .doc(object.city + object.caseTitle)
+                            .set(object.toMap());
+                        toHive(object.city + object.caseTitle);
                         Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -187,5 +189,11 @@ class _CaseDetailsPage extends State<CaseDetails> {
         ),
       ),
     );
+  }
+
+  void toHive(String keyword) async {
+    Hive.box("FIR1").put(keyword, keyword);
+    var x = Hive.box("FIR1").keys.toList();
+    print(x);
   }
 }
