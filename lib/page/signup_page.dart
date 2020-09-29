@@ -83,7 +83,7 @@ class Signup extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Card(
-                  color: Colors.white.withOpacity(0.6),
+                  color: Colors.white.withOpacity(0.9),
                   elevation: 20,
                   child: Column(
                     children: <Widget>[

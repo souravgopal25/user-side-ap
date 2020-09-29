@@ -6,7 +6,7 @@ class AuthService {
     var result =
         await _auth.signInWithEmailAndPassword(email: email, password: pass);
     User user = result.user;
-    print(user.uid);
+
     return user;
   }
 

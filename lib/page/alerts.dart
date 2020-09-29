@@ -73,7 +73,7 @@ class _AlertsState extends State<Alerts> {
             }
 
             return Center(
-              child: Text("Loaded"),
+              child: CircularProgressIndicator(),
             );
           }),
     );

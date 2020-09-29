@@ -1,7 +1,13 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:user_side_ap/page/dashboard.dart';
+import 'package:user_side_ap/page/helpline_page.dart';
+import 'package:user_side_ap/page/qrCodes.dart';
+import 'package:user_side_ap/service/auth.dart';
 
 class Menu extends StatelessWidget {
-  const Menu({Key key}) : super(key: key);
+  final User user;
+  const Menu({Key key, this.user}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +38,10 @@ class Menu extends StatelessWidget {
               'User Profile',
               style: TextStyle(fontSize: 25.0),
             ),
+            onTap: () {
+              Navigator.push(context,
+                  new MaterialPageRoute(builder: (context) => Dashboard()));
+            },
           ),
           ListTile(
             leading: Icon(
@@ -42,6 +52,10 @@ class Menu extends StatelessWidget {
               'View Case Status',
               style: TextStyle(fontSize: 25.0),
             ),
+            onTap: () {
+              Navigator.push(context,
+                  new MaterialPageRoute(builder: (context) => QrList()));
+            },
           ),
           ListTile(
             leading: Icon(
@@ -52,6 +66,7 @@ class Menu extends StatelessWidget {
               'Language Change',
               style: TextStyle(fontSize: 25.0),
             ),
+            onTap: () {},
           ),
           ListTile(
             leading: Icon(
@@ -62,6 +77,10 @@ class Menu extends StatelessWidget {
               'Helpline',
               style: TextStyle(fontSize: 25.0),
             ),
+            onTap: () {
+              Navigator.push(context,
+                  new MaterialPageRoute(builder: (context) => Helpline()));
+            },
           ),
           ListTile(
             leading: Icon(
@@ -72,6 +91,12 @@ class Menu extends StatelessWidget {
               'SignOut',
               style: TextStyle(fontSize: 25.0),
             ),
+            onTap: () async {
+              print(user.email);
+              print(user.displayName);
+              Navigator.push(context,
+                  new MaterialPageRoute(builder: (context) => Dashboard()));
+            },
           ),
         ],
       ),

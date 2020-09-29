@@ -78,7 +78,7 @@ class _LoginPageState extends State<LoginPage> {
                   child: Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: Card(
-                      color: Colors.white60.withOpacity(0.6),
+                      color: Colors.white60.withOpacity(0.9),
                       elevation: 15,
                       child: Column(
                         children: <Widget>[

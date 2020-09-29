@@ -23,9 +23,10 @@ class LoginForm extends StatefulWidget {
 //TODO ADD BLOC
 
 class _LoginFormState extends State<LoginForm> {
+  AuthService authService = AuthService();
   final phoneController = TextEditingController();
   final otpController = TextEditingController();
-  Future<bool> loginUser(String phone, BuildContext context) async {
+  Future<bool> loginUser(String phone, BuildContext context, User user1) async {
     FirebaseAuth _auth = FirebaseAuth.instance;
     _auth.verifyPhoneNumber(
         phoneNumber: phone,
@@ -35,7 +36,11 @@ class _LoginFormState extends State<LoginForm> {
           User user = result.user;
           if (user != null) {
             Navigator.push(
-                context, MaterialPageRoute(builder: (context) => Dashboard()));
+                context,
+                MaterialPageRoute(
+                    builder: (context) => Dashboard(
+                          user: user1,
+                        )));
           }
         },
         verificationFailed: (FirebaseAuthException exception) {
@@ -76,7 +81,9 @@ class _LoginFormState extends State<LoginForm> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => Dashboard()));
+                                  builder: (context) => Dashboard(
+                                        user: user,
+                                      )));
                         } else {
                           print("Error");
                         }
@@ -162,16 +169,17 @@ class _LoginFormState extends State<LoginForm> {
                   if (!widget._formKey.currentState.validate()) {
                     return;
                   } else {
-                    FirebaseAuth _auth = FirebaseAuth.instance;
                     if (!widget._formKey.currentState.validate()) {
                       return;
                     } else {
-                      var result1 = await _auth.signInWithEmailAndPassword(
-                          email: widget.emailController.text.trim(),
-                          password: widget.passController.text.trim());
-                      User user = result1.user;
+                      var result1 =
+                          await authService.signInwithEmailAndPassword(
+                              widget.emailController.text.trim(),
+                              widget.passController.text.trim());
+                      User user = result1;
                       if (user != null) {
-                        loginUser("+91" + phoneController.text.trim(), context);
+                        loginUser(
+                            "+91" + phoneController.text.trim(), context, user);
                       }
                     }
                   }

@@ -34,7 +34,7 @@ class _MyHomeState extends State<MyHome> {
         builder: (context, snapshot) {
           if (snapshot.hasError) {}
           if (snapshot.connectionState == ConnectionState.done) {
-            return QrList();
+            return LoginPage();
           }
           return Scaffold(
             body: Center(

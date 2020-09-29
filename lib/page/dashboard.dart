@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:user_side_ap/card/drawer_card.dart';
 import 'package:user_side_ap/models/news.dart';
@@ -6,11 +7,13 @@ import 'package:user_side_ap/page/news_page.dart';
 import 'package:user_side_ap/page/report/fir_page1.dart';
 import 'package:user_side_ap/page/reportanonymous/anonymous_fir_page1.dart';
 import 'package:user_side_ap/page/updates.dart';
+import 'package:user_side_ap/service/auth.dart';
 
 import 'package:user_side_ap/slider/slider.dart';
 
 class Dashboard extends StatelessWidget {
-  const Dashboard({Key key}) : super(key: key);
+  final User user;
+  const Dashboard({Key key, this.user}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +62,7 @@ class Dashboard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(0.0),
                   child: DashBoardSlider(),
                 ),
                 SizedBox(
@@ -234,7 +237,9 @@ class Dashboard extends StatelessWidget {
           ),
         ),
       ),
-      drawer: Menu(),
+      drawer: Menu(
+        user: user,
+      ),
     );
   }
 }
