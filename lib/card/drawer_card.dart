@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:user_side_ap/page/dashboard.dart';
 import 'package:user_side_ap/page/helpline_page.dart';
+import 'package:user_side_ap/page/login_page.dart';
 import 'package:user_side_ap/page/qrCodes.dart';
 import 'package:user_side_ap/service/auth.dart';
 
@@ -92,10 +93,8 @@ class Menu extends StatelessWidget {
               style: TextStyle(fontSize: 25.0),
             ),
             onTap: () async {
-              print(user.email);
-              print(user.displayName);
               Navigator.push(context,
-                  new MaterialPageRoute(builder: (context) => Dashboard()));
+                  new MaterialPageRoute(builder: (context) => LoginPage()));
             },
           ),
         ],

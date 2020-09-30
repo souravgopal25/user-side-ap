@@ -34,21 +34,18 @@ class _NewsPageState extends State<NewsPage> {
                 height: 100,
                 fit: BoxFit.contain,
               ),
-              SizedBox(
-                width: 20,
-              ),
               Column(
                 children: [
                   Text(
                     "GOVERMENT OF ASSAM",
-                    style: TextStyle(color: Colors.black, fontSize: 25),
+                    style: TextStyle(color: Colors.black, fontSize: 15),
                   ),
                   Text(
                     "ASSAM POLICE",
                     style: TextStyle(
                         color: Colors.blue[400],
                         fontWeight: FontWeight.bold,
-                        fontSize: 25),
+                        fontSize: 20),
                   ),
                 ],
               )
@@ -70,7 +67,7 @@ class _NewsPageState extends State<NewsPage> {
                     return NewsCard(articles: snapshot.data.articles[index]);
                   });
             } else if (snapshot.hasError) {
-              return Text("Error");
+              return Center(child: Text("Error"));
             }
             return Center(child: CircularProgressIndicator());
           }),

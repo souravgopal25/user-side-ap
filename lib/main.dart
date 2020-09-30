@@ -6,6 +6,7 @@ import 'package:path_provider/path_provider.dart' as path_provider;
 import 'package:user_side_ap/page/dashboard.dart';
 import 'package:user_side_ap/page/login_page.dart';
 import 'package:user_side_ap/page/qrCodes.dart';
+import 'package:user_side_ap/page/splash_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -34,7 +35,7 @@ class _MyHomeState extends State<MyHome> {
         builder: (context, snapshot) {
           if (snapshot.hasError) {}
           if (snapshot.connectionState == ConnectionState.done) {
-            return LoginPage();
+            return SplashScreen();
           }
           return Scaffold(
             body: Center(

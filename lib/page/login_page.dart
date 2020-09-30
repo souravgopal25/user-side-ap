@@ -35,21 +35,18 @@ class _LoginPageState extends State<LoginPage> {
                   height: 100,
                   fit: BoxFit.contain,
                 ),
-                SizedBox(
-                  width: 20,
-                ),
                 Column(
                   children: [
                     Text(
                       "GOVERMENT OF ASSAM",
-                      style: TextStyle(color: Colors.black, fontSize: 20),
+                      style: TextStyle(color: Colors.black, fontSize: 15),
                     ),
                     Text(
                       "ASSAM POLICE",
                       style: TextStyle(
                           color: Colors.blue[400],
                           fontWeight: FontWeight.bold,
-                          fontSize: 25),
+                          fontSize: 20),
                     ),
                   ],
                 )
