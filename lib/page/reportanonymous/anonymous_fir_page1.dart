@@ -13,12 +13,12 @@ class AnonymousRegistration extends StatefulWidget {
 }
 
 class _AnonymousPageState extends State<AnonymousRegistration> {
-  String state;
+  final state = TextEditingController();
 
-  String city;
+  final city = TextEditingController();
 
-  String district;
-  String policestation;
+  final district = TextEditingController();
+  final policestation = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -32,21 +32,18 @@ class _AnonymousPageState extends State<AnonymousRegistration> {
                 height: 100,
                 fit: BoxFit.contain,
               ),
-              SizedBox(
-                width: 20,
-              ),
               Column(
                 children: [
                   Text(
                     "GOVERMENT OF ASSAM",
-                    style: TextStyle(color: Colors.black, fontSize: 25),
+                    style: TextStyle(color: Colors.black, fontSize: 15),
                   ),
                   Text(
                     "ASSAM POLICE",
                     style: TextStyle(
                         color: Colors.blue[400],
                         fontWeight: FontWeight.bold,
-                        fontSize: 25),
+                        fontSize: 20),
                   ),
                 ],
               )
@@ -81,6 +78,7 @@ class _AnonymousPageState extends State<AnonymousRegistration> {
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
                 child: TextField(
+                  controller: state,
                   decoration: InputDecoration(
                     prefixIcon: Icon(Icons.location_city),
                     labelText: 'State',
@@ -95,6 +93,7 @@ class _AnonymousPageState extends State<AnonymousRegistration> {
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
                 child: TextField(
+                  controller: city,
                   decoration: InputDecoration(
                     prefixIcon: Icon(Icons.location_city),
                     labelText: 'City',
@@ -103,17 +102,13 @@ class _AnonymousPageState extends State<AnonymousRegistration> {
                     ),
                     border: OutlineInputBorder(),
                   ),
-                  onChanged: (value) {
-                    setState(() {
-                      city = value;
-                    });
-                  },
                 ),
               ),
 
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
                 child: TextField(
+                  controller: district,
                   decoration: InputDecoration(
                     prefixIcon: Icon(Icons.location_city),
                     labelText: 'District',
@@ -122,17 +117,13 @@ class _AnonymousPageState extends State<AnonymousRegistration> {
                     ),
                     border: OutlineInputBorder(),
                   ),
-                  onChanged: (value) {
-                    setState(() {
-                      district = value;
-                    });
-                  },
                 ),
               ),
 
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
                 child: TextField(
+                  controller: policestation,
                   decoration: InputDecoration(
                     prefixIcon: Icon(Icons.business),
                     labelText: 'Police Station',
@@ -141,11 +132,7 @@ class _AnonymousPageState extends State<AnonymousRegistration> {
                     ),
                     border: OutlineInputBorder(),
                   ),
-                  onChanged: (value) {
-                    setState(() {
-                      policestation = value;
-                    });
-                  },
+                  onChanged: (value) {},
                 ),
               ),
               Padding(
@@ -160,11 +147,16 @@ class _AnonymousPageState extends State<AnonymousRegistration> {
                         borderRadius: BorderRadius.circular(15.0)),
                     onPressed: () {
                       //Creating object to pass to nextpage
+                      setState(() {});
+                      print(state.text);
+                      print(city.text);
+                      print(district.text);
+                      print(policestation.text);
                       var detail = AnnonyDetailModel(
-                          state: state.trim(),
-                          city: city.trim(),
-                          district: district.trim(),
-                          policeStation: policestation.trim());
+                          state: state.text.trim(),
+                          city: city.text.trim(),
+                          district: district.text.trim(),
+                          policeStation: policestation.text.trim());
                       print(detail.toJson());
                       Navigator.push(
                           context,

@@ -42,21 +42,18 @@ class Signup extends StatelessWidget {
                 height: 100,
                 fit: BoxFit.contain,
               ),
-              SizedBox(
-                width: 20,
-              ),
               Column(
                 children: [
                   Text(
                     "GOVERMENT OF ASSAM",
-                    style: TextStyle(color: Colors.black, fontSize: 25),
+                    style: TextStyle(color: Colors.black, fontSize: 15),
                   ),
                   Text(
                     "ASSAM POLICE",
                     style: TextStyle(
                         color: Colors.blue[400],
                         fontWeight: FontWeight.bold,
-                        fontSize: 25),
+                        fontSize: 20),
                   ),
                 ],
               )
@@ -90,7 +87,7 @@ class Signup extends StatelessWidget {
                       Container(
                         child: Text(
                           "Signup",
-                          style: TextStyle(fontSize: 100, color: Colors.blue),
+                          style: TextStyle(fontSize: 80, color: Colors.blue),
                         ),
                       ),
                       SizedBox(

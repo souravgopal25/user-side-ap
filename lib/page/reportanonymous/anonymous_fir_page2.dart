@@ -31,21 +31,18 @@ class _AnonymousCaseDetailsPage extends State<AnonymousDetails> {
                 height: 100,
                 fit: BoxFit.contain,
               ),
-              SizedBox(
-                width: 20,
-              ),
               Column(
                 children: [
                   Text(
                     "GOVERMENT OF ASSAM",
-                    style: TextStyle(color: Colors.black, fontSize: 25),
+                    style: TextStyle(color: Colors.black, fontSize: 15),
                   ),
                   Text(
                     "ASSAM POLICE",
                     style: TextStyle(
                         color: Colors.blue[400],
                         fontWeight: FontWeight.bold,
-                        fontSize: 25),
+                        fontSize: 20),
                   ),
                 ],
               )
@@ -77,7 +74,7 @@ class _AnonymousCaseDetailsPage extends State<AnonymousDetails> {
                   ),
                   onChanged: (value) {
                     setState(() {
-                      titleCase = value;
+                      caseType = value;
                     });
                   },
                 ),
@@ -196,16 +193,6 @@ class _AnonymousCaseDetailsPage extends State<AnonymousDetails> {
             ],
           ),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        elevation: 5.0,
-        child: new Icon(Icons.chevron_right),
-        backgroundColor: Colors.blue,
-        onPressed: () {
-          /* Navigator.of(context).push(MaterialPageRoute(
-              //builder: (BuildContext context) => (UserRegistration())
-          ));*/
-        },
       ),
     );
   }

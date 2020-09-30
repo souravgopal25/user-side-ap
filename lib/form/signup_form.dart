@@ -27,7 +27,7 @@ class _SignupFormState extends State<SignupForm> {
   final ageController = TextEditingController();
   final phoneController = TextEditingController();
   String gender = '';
-  Future<bool> loginUser(String phone, BuildContext context) async {
+  Future<bool> loginUser(String phone, BuildContext context, User user) async {
     FirebaseAuth _auth = FirebaseAuth.instance;
     _auth.verifyPhoneNumber(
         phoneNumber: phone,
@@ -37,7 +37,11 @@ class _SignupFormState extends State<SignupForm> {
           User user = result.user;
           if (user != null) {
             Navigator.push(
-                context, MaterialPageRoute(builder: (context) => Dashboard()));
+                context,
+                MaterialPageRoute(
+                    builder: (context) => Dashboard(
+                          user: user,
+                        )));
           }
         },
         verificationFailed: (FirebaseAuthException exception) {
@@ -141,13 +145,13 @@ class _SignupFormState extends State<SignupForm> {
             Text(
               "Select Your Gender",
               style: TextStyle(
-                fontSize: 20,
+                fontSize: 10,
               ),
               textDirection: TextDirection.ltr,
             ),
             Container(
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
                   Radio(
                     value: 0,
@@ -156,7 +160,7 @@ class _SignupFormState extends State<SignupForm> {
                   ),
                   Text(
                     "Male",
-                    style: TextStyle(fontSize: 20),
+                    style: TextStyle(fontSize: 15),
                   ),
                   Radio(
                     value: 1,
@@ -165,7 +169,7 @@ class _SignupFormState extends State<SignupForm> {
                   ),
                   Text(
                     "Female",
-                    style: TextStyle(fontSize: 20),
+                    style: TextStyle(fontSize: 15),
                   ),
                   Radio(
                     value: 2,
@@ -174,7 +178,7 @@ class _SignupFormState extends State<SignupForm> {
                   ),
                   Text(
                     "Others",
-                    style: TextStyle(fontSize: 20),
+                    style: TextStyle(fontSize: 15),
                   ),
                 ],
               ),
@@ -253,17 +257,19 @@ class _SignupFormState extends State<SignupForm> {
             ),
             RaisedButton(
               onPressed: () async {
+                print("Hello");
                 FirebaseAuth _auth = FirebaseAuth.instance;
                 if (!widget._formKey.currentState.validate()) {
-                  return;
-                } else {
-                  var result1 = await _auth.signInWithEmailAndPassword(
+                  var result1 = await _auth.createUserWithEmailAndPassword(
                       email: widget.emailController.text.trim(),
                       password: widget.passController.text.trim());
                   User user = result1.user;
                   if (user != null) {
-                    loginUser("+91" + phoneController.text.trim(), context);
+                    loginUser(
+                        "+91" + phoneController.text.trim(), context, user);
                   }
+                } else {
+                  print("ELSE");
                 }
               },
               focusElevation: 10,

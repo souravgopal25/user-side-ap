@@ -27,21 +27,18 @@ class Dashboard extends StatelessWidget {
                 height: 100,
                 fit: BoxFit.contain,
               ),
-              SizedBox(
-                width: 20,
-              ),
               Column(
                 children: [
                   Text(
                     "GOVERMENT OF ASSAM",
-                    style: TextStyle(color: Colors.black, fontSize: 25),
+                    style: TextStyle(color: Colors.black, fontSize: 15),
                   ),
                   Text(
                     "ASSAM POLICE",
                     style: TextStyle(
                         color: Colors.blue[400],
                         fontWeight: FontWeight.bold,
-                        fontSize: 25),
+                        fontSize: 20),
                   ),
                 ],
               )
@@ -84,7 +81,8 @@ class Dashboard extends StatelessWidget {
                               ButtonTheme(
                                 buttonColor: Colors.lightBlueAccent,
                                 splashColor: Colors.red,
-                                minWidth: 350,
+                                minWidth:
+                                    MediaQuery.of(context).size.width * 0.80,
                                 height:
                                     MediaQuery.of(context).size.height * 0.15,
                                 child: RaisedButton(
@@ -108,7 +106,7 @@ class Dashboard extends StatelessWidget {
                                       Text(
                                         "Report Annomously",
                                         style: TextStyle(
-                                            color: Colors.white, fontSize: 42),
+                                            color: Colors.white, fontSize: 25),
                                       ),
                                     ],
                                   ),
@@ -125,7 +123,8 @@ class Dashboard extends StatelessWidget {
                               ButtonTheme(
                                 buttonColor: Colors.lightBlueAccent,
                                 splashColor: Colors.red,
-                                minWidth: 350,
+                                minWidth:
+                                    MediaQuery.of(context).size.width * 0.80,
                                 height:
                                     MediaQuery.of(context).size.height * 0.15,
                                 child: RaisedButton(
@@ -149,7 +148,7 @@ class Dashboard extends StatelessWidget {
                                       Text(
                                         "Register FIR",
                                         style: TextStyle(
-                                            color: Colors.white, fontSize: 42),
+                                            color: Colors.white, fontSize: 30),
                                       ),
                                     ],
                                   ),
@@ -160,72 +159,82 @@ class Dashboard extends StatelessWidget {
                           SizedBox(
                             height: 20,
                           ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: <Widget>[
-                              ButtonTheme(
-                                buttonColor: Colors.lightBlueAccent,
-                                splashColor: Colors.red,
-                                minWidth: 165,
-                                height:
-                                    MediaQuery.of(context).size.height * 0.15,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(15.0)),
-                                child: RaisedButton(
-                                  onPressed: () {
-                                    Navigator.push(
-                                        context,
-                                        new MaterialPageRoute(
-                                            builder: (context) => Alerts()));
-                                  },
-                                  child: Column(
-                                    children: [
-                                      Icon(
-                                        Icons.notification_important,
-                                        size: 40,
-                                        color: Colors.white,
-                                      ),
-                                      Text(
-                                        "Alerts",
-                                        style: TextStyle(
-                                            color: Colors.white, fontSize: 42),
-                                      ),
-                                    ],
+                          Container(
+                            width: MediaQuery.of(context).size.width * 0.80,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: <Widget>[
+                                ButtonTheme(
+                                  buttonColor: Colors.lightBlueAccent,
+                                  splashColor: Colors.red,
+                                  minWidth:
+                                      MediaQuery.of(context).size.width * 0.35,
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.15,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius:
+                                          BorderRadius.circular(15.0)),
+                                  child: RaisedButton(
+                                    onPressed: () {
+                                      Navigator.push(
+                                          context,
+                                          new MaterialPageRoute(
+                                              builder: (context) => Alerts()));
+                                    },
+                                    child: Column(
+                                      children: [
+                                        Icon(
+                                          Icons.notification_important,
+                                          size: 40,
+                                          color: Colors.white,
+                                        ),
+                                        Text(
+                                          "Alerts",
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 30),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
-                              ),
-                              ButtonTheme(
-                                buttonColor: Colors.lightBlueAccent,
-                                splashColor: Colors.red,
-                                minWidth: 165,
-                                height:
-                                    MediaQuery.of(context).size.height * 0.15,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(15.0)),
-                                child: RaisedButton(
-                                  onPressed: () {
-                                    Navigator.push(
-                                        context,
-                                        new MaterialPageRoute(
-                                            builder: (context) => NewsPage()));
-                                  },
-                                  child: Column(
-                                    children: [
-                                      Icon(
-                                        Icons.sms,
-                                        color: Colors.white,
-                                        size: 40,
-                                      ),
-                                      Text(
-                                        "News",
-                                        style: TextStyle(
-                                            color: Colors.white, fontSize: 42),
-                                      ),
-                                    ],
+                                ButtonTheme(
+                                  buttonColor: Colors.lightBlueAccent,
+                                  splashColor: Colors.red,
+                                  minWidth:
+                                      MediaQuery.of(context).size.width * 0.35,
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.15,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius:
+                                          BorderRadius.circular(15.0)),
+                                  child: RaisedButton(
+                                    onPressed: () {
+                                      Navigator.push(
+                                          context,
+                                          new MaterialPageRoute(
+                                              builder: (context) =>
+                                                  NewsPage()));
+                                    },
+                                    child: Column(
+                                      children: [
+                                        Icon(
+                                          Icons.sms,
+                                          color: Colors.white,
+                                          size: 40,
+                                        ),
+                                        Text(
+                                          "News",
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 35),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           )
                         ],
                       ),

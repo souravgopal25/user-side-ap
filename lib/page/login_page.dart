@@ -42,7 +42,7 @@ class _LoginPageState extends State<LoginPage> {
                   children: [
                     Text(
                       "GOVERMENT OF ASSAM",
-                      style: TextStyle(color: Colors.black, fontSize: 25),
+                      style: TextStyle(color: Colors.black, fontSize: 20),
                     ),
                     Text(
                       "ASSAM POLICE",
