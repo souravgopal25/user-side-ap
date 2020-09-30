@@ -1,6 +1,6 @@
 # user_side_ap
 
-A new Flutter project.
+A flutter project created for the User Side  in Assam Hackathon.
 
 ## Getting Started
 
